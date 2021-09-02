@@ -2,7 +2,7 @@
 <template>
   <div class="locations">
     <div id="badge">
-      <a href="https://electrotallinn.ee/" target="_blank"><img src="img/et-logo.jpg" height="48px" width="48px"></a>
+      <a href="https://electrotallinn.ee/" target="_blank"><img :src="require('../assets/img/et-logo.jpg')" height="48px" width="48px"></a>
       <a href="javascript:;" class="giveAccess">your location</a>
       <router-link to="top">Top</router-link>
     </div>  
@@ -86,14 +86,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  html, body {height: 100%; margin: 0; padding: 0; font-family: Arial, Helvetica, sans-serif;}
   #map, .locations {height: 100%; width: 100%;}
   #content {position: relative; width: 100%; height: 100%;}
   .infocontent img {width:100%;}
   #badge {position: absolute; bottom: 64px; left: 0;height: 48px; z-index: 10; background-color: #ec970f; }
   #badge img {float: left;}
   #badge .giveAccess { height: 48px;  line-height: 48px; padding: 8px 12px; font-weight: bold; font-size: 20px; color: white;}
-  h4 {font-size: 16px;margin: 0.5em;}
-  p {font-size: 12px;margin: 0.5em;}
+
 </style>
 

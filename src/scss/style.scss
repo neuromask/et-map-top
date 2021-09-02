@@ -2,3 +2,10 @@
 @import 'node_modules/bootstrap/scss/bootstrap.scss';
 @import 'node_modules/bootstrap-vue/src/index.scss';
 @import 'utilities/variables';
+
+
+html, body {height: 100%; margin: 0; padding: 0; font-family: Arial, Helvetica, sans-serif;}
+
+h4 {font-size: 16px;margin: 0.5em;}
+p {font-size: 12px;margin: 0.5em;}
+
