@@ -7,6 +7,7 @@
   </div>
 </template>
 
+
 <script>
 /* eslint-disable */
   import json from "../locations.json";
