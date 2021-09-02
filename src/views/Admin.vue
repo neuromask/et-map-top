@@ -10,15 +10,15 @@
 
 <script>
 /* eslint-disable */
-  import json from "../locations.json";
+import json from "../locations.json";
 
-  export default{
-      data(){
-          return{
-              myJson: json
-          }
-      }
-  }
+export default {
+  data() {
+    return {
+      myJson: json,
+    };
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
