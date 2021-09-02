@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Home from '@/views/Home.vue'
+import Locations from '@/views/Locations.vue'
+import Top from '@/views/Top.vue'
+import Admin from '@/views/Admin.vue'
 
 import NotFound from '@/components/NotFound.vue'
 
@@ -14,8 +16,22 @@ const routes = [
     component: NotFound
   }, {
     path: '/',
-    name: 'home',
-    component: Home,
+    name: 'locations',
+    component: Locations,
+    meta: {
+      auth: false
+    }
+  }, {
+    path: '/top',
+    name: 'top',
+    component: Top,
+    meta: {
+      auth: false
+    }
+  }, {
+    path: '/admin',
+    name: 'admin',
+    component: Admin,
     meta: {
       auth: false
     }

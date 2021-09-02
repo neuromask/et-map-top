@@ -20,6 +20,8 @@
     "mini-css-extract-plugin": "^1.6.0",
     "node-sass": "^6.0.0",
     "vue": "^2.6.14",
+    "vue-bootstrap-table2": "^1.1.8",
+    "vue-plugin-load-script": "^1.3.2",
     "vue-router": "^3.5.1",
     "vuex": "^3.6.2"
   },
@@ -39,6 +41,20 @@
     "pug-plain-loader": "^1.1.0",
     "sass-loader": "^10.0.0",
     "vue-template-compiler": "^2.6.14"
+  },
+  "eslintConfig": {
+    "root": false,
+    "env": {
+      "node": false
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "@vue/standard"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
   },
   "postcss": {
     "plugins": {

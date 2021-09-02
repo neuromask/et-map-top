@@ -1,0 +1,20 @@
+[
+  {
+    "id": 0,
+    "title": "Paepargi",
+    "lat": 59.434685,
+    "lng": 24.80748,
+    "description": "asddsa dsa das das dasd sa ass dasda",
+    "img": "img/img1.jpg",
+    "icon": "img/icon1.png"
+  },
+  {
+    "id": 1,
+    "title": "Paepargi 2",
+    "lat": 59.534685,
+    "lng": 24.80748,
+    "description": "asddsa dsa das das dasd sa ass dasda",
+    "img": "img/img2.jpg",
+    "icon": "img/icon1.png"
+  }
+]
