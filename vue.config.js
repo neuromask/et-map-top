@@ -14,14 +14,5 @@ module.exports = {
       path.resolve(__dirname, 'node_modules/vue/dist/vue.runtime.esm.js')
     )
   },
-  lintOnSave: true,
-  css: {
-    loaderOptions: {
-      sass: {
-        additionalData: `
-          @import "@/scss/style.scss";
-        `
-      }
-    }
-  }
+  lintOnSave: true
 }

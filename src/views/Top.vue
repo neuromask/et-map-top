@@ -1,23 +1,39 @@
 
 <template>
   <div class="Top">
-    <b-alert show>Welcome on vue-bootstrap-boilerplate.</b-alert>
-    <b-table striped hover :items="myJson"></b-table>
+    <b-alert show>Top Table</b-alert>
+    <b-table striped hover :items="listFull"></b-table>
     <router-link to="/">Top</router-link>
   </div>
 </template>
 
 <script>
-/* eslint-disable */
-  import json from "../locations.json";
+import axios from 'axios';
 
-  export default{
-      data(){
-          return{
-              myJson: json
-          }
-      }
+export default {
+  name: 'Map',
+  props: {},
+  data() {
+    return {
+      listFull: [],
+     
+    }
+  },
+  mounted () {
+    var BACKEND_BASE = 'https://etmap.nuforms.com';
+      axios
+        .get(BACKEND_BASE + '/locations')
+        .then(response => {
+          this.listFull = response.data;
+        });
+  },
+  methods: {
+    initList() {
+
+      
+    }
   }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
