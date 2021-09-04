@@ -1,27 +1,6 @@
-
 <template>
-
   <div class="locations">
-    <b-sidebar id="sidebar-variant" title="ET⚡ Map" bg-variant="dark" text-variant="light" shadow>
-      <div class="px-3 py-0">
-        <b-img class="my-4" :src="require('../assets/img/circle.png')" fluid center></b-img>
-        <p>🇷🇺 - Карта с обозначением мест расположения розеток для зарядки, ремонта в доступных местах.</p>
-        <p>🇬🇧 - Map showing the locations of outlets for charging, repair in accessible places.</p>
-        <p>🇪🇪 - Kaart, mis näitab laadimis- ja paranduskohtade asukohti juurdepääsetavates kohtades.</p>
-        <b-list-group class="my-4">
-          <b-list-group-item><router-link to="top">Activity Top</router-link></b-list-group-item>
-          <b-list-group-item><a href="https://electrotallinn.ee/" target="_blank">ElectroTallinn Site</a></b-list-group-item>
-        </b-list-group>
-        <p style="text-align: center;">Copyright © 2021 – ElectroTallinn<br/>Crafted by Leo & <a href="https://nuforms.com/" target="_blank">Nuforms Design</a></p>
-      </div>
-    </b-sidebar>
-    <div id="badge">
-      <a v-b-toggle.sidebar-variant><img :src="require('../assets/img/et-logo.jpg')" height="48px" width="48px"></a>
-      <a href="javascript:;" class="giveAccess"><b-icon-geo></b-icon-geo><i class="bi bi-geo-alt-fill"></i></a>
-    </div>  
-
     <div id="map" ref="googleMap"></div>
-    
   </div>
 </template>
 
@@ -103,9 +82,7 @@ export default {
   #map, .locations {height: 100%; width: 100%;}
   #content {position: relative; width: 100%; height: 100%;}
   .infocontent img {width:100%;}
-  #badge {position: absolute; bottom: 64px; left: 0;height: 48px; z-index: 10; background-color: #ec970f; }
-  #badge img {float: left;}
-  #badge .giveAccess { height: 48px;  line-height: 48px; padding: 8px 12px; font-weight: bold; font-size: 20px; color: white;}
+
 
 </style>
 

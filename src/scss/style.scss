@@ -32,3 +32,8 @@ p {font-size: 12px;margin: 0.5em;}
 button {border: 0!important;outline: none;box-shadow:none !important;}
 button:focus {border: 0!important;outline: none;box-shadow:none !important;}
 button.close {background: transparent;border: 0;}
+
+
+#badge {position: fixed; bottom: 64px; left: 0;height: 48px; z-index: 10; background-color: #ec970f; }
+#badge img {float: left;}
+#badge .giveAccess { height: 48px;  line-height: 48px; padding: 8px 12px; font-weight: bold; font-size: 20px; color: white;}

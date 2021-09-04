@@ -34,9 +34,11 @@ export default {
     }
   }
 }
+// d-flex justify-content-center align-items-center
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
 </style>
 

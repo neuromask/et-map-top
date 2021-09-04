@@ -33,6 +33,13 @@ const routes = [
     name: 'admin',
     component: Admin,
     meta: {
+      auth: true
+    }
+  }, {
+    path: '/protected',
+    name: 'protected',
+    component: Admin,
+    meta: {
       auth: false
     }
   }
@@ -41,6 +48,13 @@ const routes = [
 const router = new VueRouter({
   mode: 'history',
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.auth) {
+    if (!VuexPersistence.getItem('user-password')) next('/protected')
+    else next()
+  } else next()
 })
 
 export default router
