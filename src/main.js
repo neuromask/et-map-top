@@ -20,6 +20,7 @@ Vue.use(IconsPlugin)
 Vue.use(VueRouter)
 Vue.use(Vuex)
 Vue.component('app-navbar', AppNavbar)
+Vue.component('app-login', Login)
 
 const store = new Vuex.Store(
   {

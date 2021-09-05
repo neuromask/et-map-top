@@ -10,9 +10,12 @@
         <b-list-group class="my-4">
             <b-list-group-item><router-link to="/">Map</router-link></b-list-group-item>
             <b-list-group-item><router-link to="top">Activity Top</router-link></b-list-group-item>
-            <b-list-group-item><router-link to="access">Admin Access</router-link></b-list-group-item>
+            <b-list-group-item><a v-b-modal.modal-login>Admin Access</a></b-list-group-item>
             <b-list-group-item><a href="https://electrotallinn.ee/" target="_blank">ElectroTallinn Site</a></b-list-group-item>
         </b-list-group>
+        <b-modal id="modal-login" title="Access Admin area" ok-only ok-variant="secondary" ok-title="Cancel">
+            <app-login></app-login>
+        </b-modal>
         <p style="text-align: center;">Copyright © 2021 – ElectroTallinn<br/>Crafted by Leo & <a href="https://nuforms.com/" target="_blank">Nuforms Design</a></p>
         </div>
         </b-sidebar>
