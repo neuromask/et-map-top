@@ -3,7 +3,7 @@
   <div class="Admin">
     <b-alert show>Welcome on vue-bootstrap-boilerplate.</b-alert>
     <b-table striped hover :items="myJson"></b-table>
-    <router-link to="/">Map</router-link>
+    <router-link to="/">Maps</router-link>
   </div>
 </template>
 

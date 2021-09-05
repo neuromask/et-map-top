@@ -1,0 +1,33 @@
+<template>
+    <div>
+        <h1>Login</h1>
+        <input type="password" name="password" v-model="input.password" placeholder="Password" />
+        <button type="button" v-on:click="login()">Login</button>
+    </div>
+</template>
+
+<script>
+    export default {
+        name: "Login",
+        data() {
+            return {
+                input: {
+                    username: "",
+                    password: ""
+                }
+            }
+        },
+        methods: {
+            login() {
+                if(this.input.password == "pass") {
+                    this.$store.commit("setAuthentication", true);
+                    this.$router.replace({ name: "admin" });
+                } else {
+                    console.log("The username and / or password is incorrect");
+                }
+            }
+        }
+    }
+</script>
+
+<style scoped></style>

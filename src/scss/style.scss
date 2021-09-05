@@ -19,8 +19,8 @@ $input-btn-focus-width: 0;
 @import 'node_modules/bootstrap-vue/src/index.scss';
 
 
-html, body, #app, .holder {height: 100%; margin: 0; padding: 0; font-family: Arial, Helvetica, sans-serif;}
-
+html, body, #app {height: 100%; margin: 0; padding: 0; font-family: Arial, Helvetica, sans-serif;}
+.navbar {margin: 0; padding: 0;}
 .bg-dark {
     & h1,h2,h3,h4,strong {
         color:white;
