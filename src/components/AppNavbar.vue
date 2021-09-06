@@ -1,7 +1,7 @@
 <template>
 
     <div class="navbar">
-        <b-sidebar id="sidebar-variant" title="ET⚡ Map" bg-variant="dark" text-variant="light" shadow>
+        <b-sidebar id="sidebar-variant" title="ET⚡ Map" bg-variant="dark" text-variant="light" shadow backdrop>
         <div class="px-3 py-0">
         <b-img class="my-4" :src="require('../assets/img/circle.png')" fluid center></b-img>
         <p>🇷🇺 - Карта с обозначением мест расположения розеток для зарядки, ремонта в доступных местах.</p>
@@ -10,6 +10,7 @@
         <b-list-group class="my-4">
             <b-list-group-item><router-link to="/">Map</router-link></b-list-group-item>
             <b-list-group-item><router-link to="top">Activity Top</router-link></b-list-group-item>
+            <b-list-group-item><router-link to="help">Help</router-link></b-list-group-item>
             <b-list-group-item><a href="https://electrotallinn.ee/" target="_blank">ElectroTallinn Site</a></b-list-group-item>
             <b-list-group-item><a v-b-modal.modal-login>Admin Access</a></b-list-group-item>
         </b-list-group>
@@ -21,8 +22,7 @@
         </b-sidebar>
 
         <div id="badge">
-            <a v-b-toggle.sidebar-variant><img :src="require('../assets/img/et-logo.jpg')" height="48px" width="48px"></a>
-            <a href="javascript:;" class="giveAccess"><b-icon-geo></b-icon-geo><i class="bi bi-geo-alt-fill"></i></a>
+            <a v-b-toggle.sidebar-variant><b-icon-list></b-icon-list></a>
         </div>
         
     </div>

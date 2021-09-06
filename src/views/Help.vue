@@ -1,0 +1,89 @@
+
+<template>
+  <div id="top">
+    <div id="bg-image">
+      <div id="banner" class="g-light" :style="{backgroundImage: 'url('+bgImages[1]+')'}">
+      </div>
+
+      <b-container class="bg-light p-5 mt-4">
+          <h2>How to add locations to the map.</h2>
+          <h5>Follow easy three steps to start</h5>
+          <hr/>
+          <b-card-group deck>
+
+            <b-card img-alt="Image" img-top>
+            <b-card-img :src="require('@/assets/img/step-1.jpg')"></b-card-img>
+              <b-card-text>
+                <h3 class="mt-4"><b-badge variant="danger" class="text-white font-weight-bold">1</b-badge> Telegram App</h3>
+                <hr/>
+                <h5>Install Telegram app on your phone.</h5> 
+              </b-card-text>
+              
+              <template #footer>
+                <b-button href="https://telegram.org/" variant="primary">Get Telegram</b-button>
+              </template>
+            </b-card>
+
+            <b-card img-alt="Image" img-top>
+            <b-card-img :src="require('@/assets/img/step-2.jpg')"></b-card-img>
+              <b-card-text>
+                <h3 class="mt-4"><b-badge variant="danger" class="text-white font-weight-bold">2</b-badge> Chat with Bot</h3>
+                <hr/>
+                <h5>Chat with ElectroBot in private messages.</h5>
+              </b-card-text>
+              
+              <template #footer>
+                <b-button href="https://t.me/electrotallinnbot" variant="primary">Start chat</b-button>
+              </template>
+            </b-card>
+
+            <b-card img-alt="Image" img-top>
+            <b-card-img :src="require('@/assets/img/step-3.jpg')"></b-card-img>
+              <b-card-text>
+                <h3 class="mt-4"><b-badge variant="danger" class="text-white font-weight-bold">3</b-badge> Type command</h3>
+                <hr/>
+                <h5>Type <strong>/add</strong> command in chat with bot and follow instructions.</h5>
+              </b-card-text>
+              
+              <template #footer>
+                <b-button href="https://t.me/electrotallinnbot" variant="primary">Start chat</b-button>
+              </template>
+            </b-card>
+
+          </b-card-group>
+
+      </b-container>
+    </div>
+  </div>
+</template>
+
+<script>
+import axios from 'axios';
+
+export default {
+  name: 'Map',
+  props: {},
+  data() {
+    return {
+      BACKEND_BASE: 'https://etmap.nuforms.com',
+      bgImages: [
+        require("@/assets/img/pattern-icons.png"),
+        require("@/assets/img/top.jpg"),
+        require("@/assets/img/tallinn.svg")
+      ],
+    }
+  },
+  mounted () {
+  },
+  methods: {
+
+  }
+}
+// d-flex justify-content-center align-items-center
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+
+</style>
+

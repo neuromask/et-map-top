@@ -4,16 +4,33 @@
     <div id="bg-image">
       <div id="banner" class="g-light" :style="{backgroundImage: 'url('+bgImages[1]+')'}">
       </div>
-
-      <b-container class="bg-light p-4 mt-4">
+      <b-container class="px-5 pt-4">
+        <h2>How to add locations to the map.</h2>
+        <hr/>
+      </b-container>
+      <b-container class="bg-light p-5">
         <b-row>
           <b-col cols="12" lg="4">
             <h3><b-badge variant="danger" class="text-white font-weight-bold">Top</b-badge> ElectroPeople</h3>
-            <b-table borderless striped hover :items="listTop" :fields="fields_top" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc"></b-table>
-            <h3><b-badge variant="danger" class="text-white font-weight-bold">rank</b-badge> Legend</h3>
-            <b-table borderless striped hover :items="rank" :fields="fields_rang">
+            <b-table borderless striped hover :items="listTop" :fields="fields_top" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc">
+              <template #cell(indx)="data">
+                <h4 class="text-right">{{ data.index + 1 }}</h4>
+              </template>
+              <template #cell(img)="data">
+                <b-img :src="ranks[getRank(data.item.count)].icon" center left fluid class="table-icon"></b-img>
+              </template>
+              <template #cell(user)="data">
+                {{ data.item.user }}
+              </template>
+            </b-table>
+            <hr/>
+            <h3 class="mt-1"><b-badge variant="danger" class="text-white font-weight-bold">Ranks</b-badge> Legend</h3>
+            <b-table borderless striped hover :items="ranks" :fields="fields_rank">
               <template #cell(icon)="data">
-                <b-img :src="data.item.icon" center fluid></b-img>
+                <b-img :src="data.item.icon" center fluid class="table-icon"></b-img>
+              </template>
+              <template #cell(minCount)="data">
+                {{ data.item.minCount }}+
               </template>
             </b-table>
           </b-col>
@@ -24,7 +41,7 @@
                 <h5>{{ data.item.title }}</h5><p>{{ data.item.description }}</p>
               </template>
               <template #cell(type)="data">
-                <b-img :src="locationIcons[data.item.type]" center fluid></b-img>
+                <b-img :src="locationIcons[data.item.type]" center fluid class="table-icon"></b-img>
               </template>
               <template #cell(imageName)="data">
                 <b-button v-b-modal="'image-modal-'+data.item.id">Show</b-button>
@@ -68,11 +85,54 @@ export default {
         AIR: require('@/assets/icon/air.png'),
         WATER: require('@/assets/icon/water.png')
       },
-      rank: [
+      ranks: [
         {
-          icon: require('@/assets/icon/repair.png'),
+          num: 0,
+          icon: require('@/assets/img/ranks/rank-1.png'),
           name: 'ElectroNewbie',
-          range: '1-5'
+          minCount: 1
+        },
+        {
+          num: 1,
+          icon: require('@/assets/img/ranks/rank-2.png'),
+          name: 'ElectroWheels',
+          minCount: 3
+        },
+        {
+          num: 2,
+          icon: require('@/assets/img/ranks/rank-3.png'),
+          name: 'ElectroExpert',
+          minCount: 5
+        },
+        {
+          num: 3,
+          icon: require('@/assets/img/ranks/rank-4.png'),
+          name: 'ElectroCaptain',
+          minCount: 10
+        },
+        {
+          num: 4,
+          icon: require('@/assets/img/ranks/rank-5.png'),
+          name: 'ElectroGoldie',
+          minCount: 20
+        },
+        {
+          num: 5,
+          icon: require('@/assets/img/ranks/rank-6.png'),
+          name: 'ElectroPresident',
+          minCount: 50
+        },
+        {
+          num: 6,
+          icon: require('@/assets/img/ranks/rank-7.png'),
+          name: 'ElectroDevil',
+          minCount: 75
+        },
+        {
+          num: 7,
+          icon: require('@/assets/img/ranks/rank-8.png'),
+          name: 'ElectroArchangel',
+          minCount: 100
         }
       ],
       listFull: [],
@@ -100,6 +160,16 @@ export default {
         }
       ],
       fields_top: [
+         {
+          key: 'indx',
+          sortable: false,
+          label: ''
+        },
+        {
+          key: 'img',
+          sortable: false,
+          label: ''
+        },
         {
           key: 'user',
           sortable: false,
@@ -113,30 +183,30 @@ export default {
       ],
       sortBy: 'count',
       sortDesc: true,
-      fields_rang: [
+      fields_rank: [
         {
           key: 'icon',
-          label: 'Sign'
+          label: 'Medal'
         },
         {
           key: 'name',
           label: 'Rank'
         },
         {
-          key: 'range',
+          key: 'minCount',
           label: 'Points'
         }
       ]
     }
   },
   computed : {
-
+  },
+  getters: {
   },
   mounted () {
     this.requests();
   },
   methods: {
-
     requests() {
       axios
         .get(this.BACKEND_BASE + '/locations')
@@ -148,9 +218,15 @@ export default {
         .then(response => {
           this.listTop = response.data;
         });
+    },
+    getRank(points) {
+      let rank;
+      for (rank of this.ranks.slice().reverse()) {
+        if (points >= rank.minCount) return rank.num;
+      }
+      return 0; //default
     }
 
-    
   }
 }
 // d-flex justify-content-center align-items-center
@@ -158,17 +234,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
-#banner {
-  width: 100%;
-  height:342px;
-  background-position: center center;
-}
-#bg-image {
-  background-position: center center;
-  width: 100%;height: 100%;
-}
-
-
 </style>
 

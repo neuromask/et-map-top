@@ -16,6 +16,7 @@ $text-light: #ffffff;
 
 $input-btn-focus-box-shadow: none;
 $input-btn-focus-width: 0;
+
 // Import Bootstrap and BootstrapVue source SCSS files
 @import 'node_modules/bootstrap/scss/bootstrap.scss';
 @import 'node_modules/bootstrap-vue/src/index.scss';
@@ -36,17 +37,67 @@ button:focus {border: 0!important;outline: none;box-shadow:none !important;}
 button.close {background: transparent;border: 0;}
 .table > tbody > tr > td {
     vertical-align: middle;
-    & h5, p {
+    & h5, p, h4 {
         margin:0;
     }
+    & h4 {
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+}
+.table-icon {
+    max-width: 48px;
+    max-height: 36px;
 }
 
-#badge {position: fixed; bottom: 64px; left: 0;height: 48px; z-index: 10; background-color: #ec970f; }
-#badge img {float: left;}
-#badge .giveAccess { height: 48px;  line-height: 48px; padding: 8px 12px; font-weight: bold; font-size: 20px; color: white;}
+#badge {
+    position: fixed; top: 10px; left: 0;height: 48px; z-index: 10; background-color: #1a2740; border-right: 4px solid #ec970f;
+    & a { height: 48px;  line-height: 48px; padding: 8px 12px; font-weight: bold; font-size: 36px; color: white;}
+}
+#badge-pos {
+    position: fixed; bottom: 24px; left: 0;height: 48px; z-index: 10; background-color: #1a2740; border-right: 4px solid #ec970f;
+    & a { height: 48px;  line-height: 48px; padding: 8px 12px; font-weight: bold; font-size: 36px; color: white;}
+}
+#banner {
+    width: 100%;
+    height:342px;
+    background-position: center center;
+}
+#bg-image {
+    background-position: center center;
+    width: 100%;height: 100%;
+}
+
+b-card-text p {
+    font-size: 18px;
+}
+
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    width: 64px;
+    border-top: 3px solid #ec970f;
+    display: inline-block;
+  }
 
 // Google map elements
-.infocontent img {
-    max-height: 600px;
-    max-width: 600px;
+.infocontent {
+    text-align: center;
+    & img {
+        max-height: 600px;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    & p {
+        font-size: 16px;
+    }
+    & h4 {
+        font-size:18px;
+    }
+    & small {
+        font-size: 10px;
+        float: right;
+    }
+    
 }

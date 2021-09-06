@@ -5,9 +5,10 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 
 // Components and views
-import AppNavbar from '@//components/AppNavbar.vue'
 import Locations from '@/views/Locations.vue'
+import AppNavbar from '@//components/AppNavbar.vue'
 import Top from '@/views/Top.vue'
+import Help from '@/views/Help.vue'
 import Admin from '@/views/Admin.vue'
 import Login from '@/components/Login.vue'
 import NotFound from '@/components/NotFound.vue'
@@ -45,6 +46,13 @@ const router = new VueRouter({
       path: '/',
       name: 'locations',
       component: Locations,
+      meta: {
+        auth: false
+      }
+    }, {
+      path: '/help',
+      name: 'help',
+      component: Help,
       meta: {
         auth: false
       }
