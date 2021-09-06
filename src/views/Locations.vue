@@ -7,13 +7,14 @@
 <script>
 import axios from 'axios';
 import $Scriptjs from 'scriptjs';
-import mapStyle from '../assets/json/mapStyle.json';
+import mapStyle from '@/assets/json/mapStyle.json';
 
 export default {
   name: 'Map',
   props: {},
   data() {
     return {
+      BACKEND_BASE: 'https://etmap.nuforms.com',
       map: null,
       mapCenter: {lat: 0, lng:0},
       mapConfig: {
@@ -27,10 +28,10 @@ export default {
     },
     apiKey: 'AIzaSyClDGFnyszA_dpXvvYW63HqTSOvz04JJps',
     locationIcons: {
-        CHARGE: require('../assets/icon/charge.png'),
-        REPAIR: require('../assets/icon/repair.png'),
-        AIR: require('../assets/icon/air.png'),
-        WATER: require('../assets/icon/water.png')
+        CHARGE: require("@/assets/icon/charge.png"),
+        REPAIR: require('@/assets/icon/repair.png'),
+        AIR: require('@/assets/icon/air.png'),
+        WATER: require('@/assets/icon/water.png')
       }
     }
   },
@@ -44,17 +45,14 @@ export default {
 
       const mapContainer = this.$refs.googleMap;
       this.map = new window.google.maps.Map(mapContainer, this.mapConfig);
-
-
-      var BACKEND_BASE = 'https://etmap.nuforms.com';
-      var infowindow = new window.google.maps.InfoWindow({});
+      const infowindow = new window.google.maps.InfoWindow({});
+      let baseUrl = this.BACKEND_BASE;
 
       axios
-        .get(BACKEND_BASE + '/locations')
+        .get(baseUrl + '/locations')
         .then(response => {
           for (const location of response.data) {
             //console.log(location);
-
             var marker = new window.google.maps.Marker({
               position: new window.google.maps.LatLng(location.lat, location.lng),
               map: this.map,
@@ -64,9 +62,8 @@ export default {
             });
 
             window.google.maps.event.addListener(marker, 'click', (function(marker) {
-
               return function() {
-                infowindow.setContent("<div class='infocontent'>" + (location.imageName ? "<img src='" + BACKEND_BASE + '/images/' + location.imageName + "'>" : "") + "<h4>" + location.title + "</h4><p>" + (location.description || "") + "</p></div>");
+                infowindow.setContent("<div class='infocontent'>" + (location.imageName ? "<img src='" + baseUrl + '/images/' + location.imageName + "'>" : "") + "<h4>" + location.title + "</h4><p>" + (location.description || "") + "</p></div>");
                 infowindow.open(this.map, marker);
               }
             })(marker));
