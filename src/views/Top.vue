@@ -2,13 +2,11 @@
 <template>
   <div id="top">
     <div id="bg-image">
-      <div id="banner" class="g-light" :style="{backgroundImage: 'url('+bgImages[1]+')'}">
-      </div>
-      <b-container class="px-5 pt-4">
-        <h2>How to add locations to the map.</h2>
+      <div id="banner" class="g-light" :style="{backgroundImage: 'url('+bgImages[1]+')'}"></div>
+      <b-container class="bg-light mt-4 p-5">
+        <h2>List of all locations & people activity.</h2>
+        <h5>Be the first in ranking!</h5>
         <hr/>
-      </b-container>
-      <b-container class="bg-light p-5">
         <b-row>
           <b-col cols="12" lg="4">
             <h3><b-badge variant="danger" class="text-white font-weight-bold">Top</b-badge> ElectroPeople</h3>
@@ -20,12 +18,11 @@
                 <b-img :src="ranks[getRank(data.item.count)].icon" center left fluid class="table-icon"></b-img>
               </template>
               <template #cell(user)="data">
-                {{ data.item.user }}
+                <h4>{{ data.item.user }}</h4><i class="rank-sub">{{ranks[getRank(data.item.count)].name}}</i>
               </template>
             </b-table>
-            <hr/>
-            <h3 class="mt-1"><b-badge variant="danger" class="text-white font-weight-bold">Ranks</b-badge> Legend</h3>
-            <b-table borderless striped hover :items="ranks" :fields="fields_rank">
+            <h3 class="mt-5"><b-badge variant="danger" class="text-white font-weight-bold">Ranks</b-badge> Legend</h3>
+            <b-table class="mb-5" borderless striped hover :items="ranks" :fields="fields_rank">
               <template #cell(icon)="data">
                 <b-img :src="data.item.icon" center fluid class="table-icon"></b-img>
               </template>
@@ -38,21 +35,21 @@
             <h3><b-badge variant="danger" class="text-white font-weight-bold">List</b-badge> Locations</h3>
             <b-table borderless striped hover :items="listFull" :fields="fields_loc">
               <template #cell(title)="data">
-                <h5>{{ data.item.title }}</h5><p>{{ data.item.description }}</p>
+                <h4>{{ data.item.title }}</h4><p>{{ data.item.description }}</p><small>Added by: {{ data.item.user }}</small>
               </template>
               <template #cell(type)="data">
                 <b-img :src="locationIcons[data.item.type]" center fluid class="table-icon"></b-img>
               </template>
               <template #cell(imageName)="data">
-                <b-button v-b-modal="'image-modal-'+data.item.id">Show</b-button>
+                <div>
+                  <b-button size="sm" v-b-modal="'image-modal-'+data.item.id" class="mb-2">Image</b-button>
+                  <b-button size="sm" v-b-modal="'map-modal-'+data.item.id">Map</b-button>
+                </div>
                 <b-modal :id="'image-modal-'+data.item.id" title="Photo" ok-only>
                   <b-img :src="BACKEND_BASE + '/images/' + data.item.imageName" center fluid></b-img>
                 </b-modal>
-              </template>
-              <template #cell(lat)="data">
-                <b-button v-b-modal="'map-modal-'+data.item.id">Show</b-button>
                 <b-modal :id="'map-modal-'+data.item.id" title="Point on map" ok-only>
-                  <iframe width="100%" height="460px" frameBorder="0" :src="'http://maps.google.com/maps?q='+data.item.lat+','+data.item.lng+'&z=15&output=embed'"></iframe>
+                  <iframe width="100%" height="460px" frameBorder="0" :src="'https://maps.google.com/maps?q='+data.item.lat+','+data.item.lng+'&z=15&output=embed'"></iframe>
                 </b-modal>
               </template>
             </b-table>
@@ -146,17 +143,12 @@ export default {
         {
           key: 'title',
           sortable: true,
-          label: 'Location name'
+          label: 'Name'
         },
         {
           key: 'imageName',
           sortable: false,
-          label: 'Photo'
-        },
-        {
-          key: 'lat',
-          sortable: false,
-          label: 'Map'
+          label: 'Info'
         }
       ],
       fields_top: [
@@ -208,10 +200,11 @@ export default {
   },
   methods: {
     requests() {
+
       axios
         .get(this.BACKEND_BASE + '/locations')
         .then(response => {
-          this.listFull = response.data;
+          this.listFull = response.data.slice().reverse();
         });
       axios
         .get(this.BACKEND_BASE + '/locations/top')

@@ -29,9 +29,8 @@ html, body, #app {height: 100%; margin: 0; padding: 0; font-family: Arial, Helve
         color:white;
     }
 }
+.container {border-top:4px solid #ec970f;}
 .gm-ui-hover-effect {background: transparent!important;border: 0!important;}
-h4 {font-size: 16px;margin: 0.5em;}
-p {font-size: 12px;margin: 0.5em;}
 button {border: 0!important;outline: none;box-shadow:none !important;}
 button:focus {border: 0!important;outline: none;box-shadow:none !important;}
 button.close {background: transparent;border: 0;}
@@ -42,19 +41,20 @@ button.close {background: transparent;border: 0;}
     }
     & h4 {
         font-weight: bold;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
 }
 .table-icon {
     max-width: 48px;
-    max-height: 36px;
+    max-height: 48px;
 }
+.rank-sub {font-size: 14px; padding-left:0.5rem; border-left:4px solid #ec970f;}
 
 #badge {
     position: fixed; top: 10px; left: 0;height: 48px; z-index: 10; background-color: #1a2740; border-right: 4px solid #ec970f;
     & a { height: 48px;  line-height: 48px; padding: 8px 12px; font-weight: bold; font-size: 36px; color: white;}
 }
-#badge-pos {
+#badgePos {
     position: fixed; bottom: 24px; left: 0;height: 48px; z-index: 10; background-color: #1a2740; border-right: 4px solid #ec970f;
     & a { height: 48px;  line-height: 48px; padding: 8px 12px; font-weight: bold; font-size: 36px; color: white;}
 }
@@ -62,6 +62,7 @@ button.close {background: transparent;border: 0;}
     width: 100%;
     height:342px;
     background-position: center center;
+    background-size: cover;
 }
 #bg-image {
     background-position: center center;
@@ -100,4 +101,21 @@ hr {
         float: right;
     }
     
+}
+
+.mobile {
+
+    & .container {
+        padding-left: 1rem!important;
+        padding-right: 1rem!important;
+    }
+
+    & .table th, .table td {
+        padding: 0.5rem!important;
+    }
+
+    #banner {
+        height:200px;
+    }
+
 }

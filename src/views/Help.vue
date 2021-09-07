@@ -2,8 +2,7 @@
 <template>
   <div id="top">
     <div id="bg-image">
-      <div id="banner" class="g-light" :style="{backgroundImage: 'url('+bgImages[1]+')'}">
-      </div>
+      <div id="banner" class="g-light" :style="{backgroundImage: 'url('+bgImages[1]+')'}"></div>
 
       <b-container class="bg-light p-5 mt-4">
           <h2>How to add locations to the map.</h2>
@@ -14,9 +13,9 @@
             <b-card img-alt="Image" img-top>
             <b-card-img :src="require('@/assets/img/step-1.jpg')"></b-card-img>
               <b-card-text>
-                <h3 class="mt-4"><b-badge variant="danger" class="text-white font-weight-bold">1</b-badge> Telegram App</h3>
+                <h3 class="mt-4 font-weight-bold"><b-badge variant="danger" class="text-white">1</b-badge> Telegram App</h3>
                 <hr/>
-                <h5>Install Telegram app on your phone.</h5> 
+                <h5>Install <strong>Telegram</strong> app on your phone.</h5> 
               </b-card-text>
               
               <template #footer>
@@ -27,9 +26,9 @@
             <b-card img-alt="Image" img-top>
             <b-card-img :src="require('@/assets/img/step-2.jpg')"></b-card-img>
               <b-card-text>
-                <h3 class="mt-4"><b-badge variant="danger" class="text-white font-weight-bold">2</b-badge> Chat with Bot</h3>
+                <h3 class="mt-4 font-weight-bold"><b-badge variant="danger" class="text-white">2</b-badge> Chat with Bot</h3>
                 <hr/>
-                <h5>Chat with ElectroBot in private messages.</h5>
+                <h5>Start <strong>private chat</strong> with ElectroBot in Telegram.</h5>
               </b-card-text>
               
               <template #footer>
@@ -40,7 +39,7 @@
             <b-card img-alt="Image" img-top>
             <b-card-img :src="require('@/assets/img/step-3.jpg')"></b-card-img>
               <b-card-text>
-                <h3 class="mt-4"><b-badge variant="danger" class="text-white font-weight-bold">3</b-badge> Type command</h3>
+                <h3 class="mt-4 font-weight-bold"><b-badge variant="danger" class="text-white">3</b-badge> Type command</h3>
                 <hr/>
                 <h5>Type <strong>/add</strong> command in chat with bot and follow instructions.</h5>
               </b-card-text>

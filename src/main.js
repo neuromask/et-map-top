@@ -3,6 +3,7 @@ import Vuex from "vuex"
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
+import VueMobileDetection from "vue-mobile-detection";
 
 // Components and views
 import Locations from '@/views/Locations.vue'
@@ -22,6 +23,7 @@ Vue.use(VueRouter)
 Vue.use(Vuex)
 Vue.component('app-navbar', AppNavbar)
 Vue.component('app-login', Login)
+Vue.use(VueMobileDetection);
 
 const store = new Vuex.Store(
   {

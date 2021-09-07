@@ -1,6 +1,7 @@
 const path = require('path')
 
 module.exports = {
+  publicPath: './',
   devServer: {
     port: '3000',
     overlay: {
