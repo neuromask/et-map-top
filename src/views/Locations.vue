@@ -88,9 +88,15 @@ export default {
               lat: position.coords.latitude,
               lng: position.coords.longitude
           };
+          let map = this.map;
           // set current locations
-          this.map.setCenter(pos);
-          this.map.setZoom(15);
+          map.setCenter(pos);
+          map.setZoom(15);
+          new google.maps.Marker({
+            position: pos,
+            map,
+            title: "Your location!",
+          });
         });
       }
     }
