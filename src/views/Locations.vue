@@ -24,15 +24,14 @@ export default {
       mapConfig: {
         zoom: 12,
         center: { lat: 59.434685, lng: 24.80748 },
-        mapTypeId: 'terrain',
         styles: mapStyle
       },
       apiKey: 'AIzaSyClDGFnyszA_dpXvvYW63HqTSOvz04JJps',
       locationIcons: {
-        CHARGE: require("@/assets/icon/charge.png"),
-        REPAIR: require('@/assets/icon/repair.png'),
-        AIR: require('@/assets/icon/air.png'),
-        WATER: require('@/assets/icon/water.png')
+        CHARGE: require("@/assets/img/icon/icon-charge.svg"),
+        REPAIR: require('@/assets/img/icon/icon-repair.svg'),
+        AIR: require('@/assets/img/icon/icon-air.svg'),
+        WATER: require('@/assets/img/icon/icon-water.svg')
       }
     }
   },
@@ -67,7 +66,7 @@ export default {
           var marker = new google.maps.Marker({
             position: new google.maps.LatLng(location.lat, location.lng),
             map: this.map,
-            icon: {url: this.locationIcons[location.type], scaledSize: new google.maps.Size(24, 24)},
+            icon: {url: this.locationIcons[location.type], scaledSize: new google.maps.Size(32, 32)},
             title: location.title,
             id: location.id
           });

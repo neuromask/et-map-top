@@ -1,9 +1,11 @@
 import Vue from 'vue'
+import VueGtag from "vue-gtag";
 import Vuex from "vuex"
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
 import VueMobileDetection from "vue-mobile-detection";
+
 
 // Components and views
 import Locations from '@/views/Locations.vue'
@@ -17,6 +19,12 @@ import NotFound from '@/components/NotFound.vue'
 
 import './scss/style.scss'
 
+Vue.use(VueGtag, {
+  config: { id: "G-H7BDVQX6FQ" },
+  params: {
+    send_page_view: true
+  }
+}, router);
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(VueRouter)
@@ -24,6 +32,7 @@ Vue.use(Vuex)
 Vue.component('app-navbar', AppNavbar)
 Vue.component('app-login', Login)
 Vue.use(VueMobileDetection);
+
 
 const store = new Vuex.Store(
   {

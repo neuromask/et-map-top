@@ -2,7 +2,7 @@
 <template>
   <div id="top">
     <div id="bg-image">
-      <div id="banner" class="g-light" :style="{backgroundImage: 'url('+bgImages[1]+')'}"></div>
+      <div id="banner" class="bg-light" :style="{backgroundImage: 'url('+bgImages[1]+')'}"></div>
       <b-container class="bg-light mt-4 p-5">
 
         <h2 class="m-0">ElectroPeople ranking - top activity.</h2>
@@ -82,13 +82,13 @@ export default {
       bgImages: [
         require("@/assets/img/pattern-icons.png"),
         require("@/assets/img/top.jpg"),
-        require("@/assets/img/tallinn.svg")
+        require("@/assets/img/tallinn.svg"),
+        require("@/assets/img/mol.svg")
       ],
       locationIcons: {
-        CHARGE: require("@/assets/icon/charge.png"),
-        REPAIR: require('@/assets/icon/repair.png'),
-        AIR: require('@/assets/icon/air.png'),
-        WATER: require('@/assets/icon/water.png')
+        CHARGE: require("@/assets/img/icon/icon-charge.svg"),
+        REPAIR: require('@/assets/img/icon/icon-repair.svg'),
+        WATER: require('@/assets/img/icon/icon-water.svg')
       },
       ranks: [
         {

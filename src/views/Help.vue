@@ -1,7 +1,7 @@
 
 <template>
   <div id="top">
-    <div id="bg-image">
+    <div id="bg-image" :style="{backgroundImage: 'url('+bgImages[3]+')'}">
       <div id="banner" class="g-light" :style="{backgroundImage: 'url('+bgImages[1]+')'}"></div>
 
       <b-container class="bg-light p-5 mt-4">
@@ -65,7 +65,8 @@ export default {
       bgImages: [
         require("@/assets/img/pattern-icons.png"),
         require("@/assets/img/top.jpg"),
-        require("@/assets/img/tallinn.svg")
+        require("@/assets/img/tallinn.svg"),
+        require("@/assets/img/mol.svg")
       ],
     }
   },
