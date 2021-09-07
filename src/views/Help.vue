@@ -11,39 +11,36 @@
           <b-card-group deck>
 
             <b-card img-alt="Image" img-top>
-            <b-card-img :src="require('@/assets/img/step-1.jpg')"></b-card-img>
-              <b-card-text>
-                <h3 class="mt-4 font-weight-bold"><b-badge variant="danger" class="text-white">1</b-badge> Telegram App</h3>
-                <hr/>
+              <h3 class="font-weight-bold"><b-badge variant="danger" class="text-white">1</b-badge> Telegram App</h3>
+              <hr/>
+              <b-card-img :src="require('@/assets/img/step-1.jpg')"></b-card-img>
+              <b-card-text class="mt-4">
                 <h5>Install <strong>Telegram</strong> app on your phone.</h5> 
               </b-card-text>
-              
               <template #footer>
                 <b-button href="https://telegram.org/" variant="primary">Get Telegram</b-button>
               </template>
             </b-card>
 
             <b-card img-alt="Image" img-top>
-            <b-card-img :src="require('@/assets/img/step-2.jpg')"></b-card-img>
-              <b-card-text>
-                <h3 class="mt-4 font-weight-bold"><b-badge variant="danger" class="text-white">2</b-badge> Chat with Bot</h3>
-                <hr/>
+              <h3 class="font-weight-bold"><b-badge variant="danger" class="text-white">2</b-badge> Chat with Bot</h3>
+              <hr/>
+              <b-card-img :src="require('@/assets/img/step-2.jpg')"></b-card-img>
+              <b-card-text class="mt-4">
                 <h5>Start <strong>private chat</strong> with ElectroBot in Telegram.</h5>
               </b-card-text>
-              
               <template #footer>
                 <b-button href="https://t.me/electrotallinnbot" variant="primary">Start chat</b-button>
               </template>
             </b-card>
 
             <b-card img-alt="Image" img-top>
-            <b-card-img :src="require('@/assets/img/step-3.jpg')"></b-card-img>
-              <b-card-text>
-                <h3 class="mt-4 font-weight-bold"><b-badge variant="danger" class="text-white">3</b-badge> Type command</h3>
-                <hr/>
+              <h3 class="font-weight-bold"><b-badge variant="danger" class="text-white">3</b-badge> Type command</h3>
+              <hr/>
+              <b-card-img :src="require('@/assets/img/step-3.jpg')"></b-card-img>
+              <b-card-text class="mt-4">
                 <h5>Type <strong>/add</strong> command in chat with bot and follow instructions.</h5>
               </b-card-text>
-              
               <template #footer>
                 <b-button href="https://t.me/electrotallinnbot" variant="primary">Start chat</b-button>
               </template>

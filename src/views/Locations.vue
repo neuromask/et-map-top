@@ -19,6 +19,7 @@ export default {
     return {
       BACKEND_BASE: 'https://etmap.nuforms.com',
       map: null,
+      test: 'test',
       mapCenter: {lat: 0, lng:0},
       mapConfig: {
         zoom: 12,
@@ -81,17 +82,15 @@ export default {
       });
     },
     getUserPos() {
-        console.log(navigator.geolocation);
-      console.log(this.map);
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            const pos = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-            };
-            // set current locations
-            this.map.setCenter(pos);
-            this.map.setZoom(15);
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+          const pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+          };
+          // set current locations
+          this.map.setCenter(pos);
+          this.map.setZoom(15);
         });
       }
     }
