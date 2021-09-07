@@ -94,50 +94,50 @@ export default {
         {
           num: 0,
           icon: require('@/assets/img/ranks/rank-1.png'),
-          name: 'ElectroNewbie',
+          name: 'ElectroIron',
           minCount: 1
         },
         {
           num: 1,
           icon: require('@/assets/img/ranks/rank-2.png'),
-          name: 'ElectroWheels',
+          name: 'ElectroBronze',
           minCount: 3
         },
         {
           num: 2,
           icon: require('@/assets/img/ranks/rank-3.png'),
-          name: 'ElectroExpert',
+          name: 'ElectroSilver',
           minCount: 5
         },
         {
           num: 3,
           icon: require('@/assets/img/ranks/rank-4.png'),
-          name: 'ElectroCaptain',
-          minCount: 10
+          name: 'ElectroGoldie',
+          minCount: 7
         },
         {
           num: 4,
           icon: require('@/assets/img/ranks/rank-5.png'),
-          name: 'ElectroGoldie',
-          minCount: 20
+          name: 'ElectroDiamond',
+          minCount: 10
         },
         {
           num: 5,
           icon: require('@/assets/img/ranks/rank-6.png'),
-          name: 'ElectroPresident',
-          minCount: 50
+          name: 'ElectroMeteor',
+          minCount: 15
         },
         {
           num: 6,
           icon: require('@/assets/img/ranks/rank-7.png'),
-          name: 'ElectroDevil',
-          minCount: 75
+          name: 'ElectroSpace',
+          minCount: 30
         },
         {
           num: 7,
           icon: require('@/assets/img/ranks/rank-8.png'),
-          name: 'ElectroArchangel',
-          minCount: 100
+          name: 'ElectroGodness',
+          minCount: 50
         }
       ],
       listFull: [],
