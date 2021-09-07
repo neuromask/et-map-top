@@ -1,7 +1,7 @@
 <template>
 
     <div class="navbar">
-        <b-sidebar id="sidebar-variant" title="ET⚡ Map" bg-variant="dark" text-variant="light" shadow >
+        <b-sidebar id="sidebar-variant" title="ET⚡ Map" bg-variant="dark" text-variant="light" shadow backdrop>
         <div class="px-3 py-0">
         <b-img class="my-4" :src="require('../assets/img/circle.png')" fluid center></b-img>
         <b-list-group class="my-4">

@@ -3,7 +3,7 @@
 $primary: #4482a9;
 $secondary: #4482a9;
 $success: #f8da19;
-$info: #c0d1e6;
+$info: #ffffff;
 $warning: #ec970f;
 $danger: #ec970f;
 $light: #c0d1e6;
@@ -36,7 +36,7 @@ button:focus {border: 0!important;outline: none;box-shadow:none !important;}
 button.close {background: transparent;border: 0;}
 .table > tbody > tr > td {
     vertical-align: middle;
-    & h5, p, h4 {
+    & h5, p, h4, h3 {
         margin:0;
     }
     & h4 {
