@@ -1,13 +1,23 @@
 
 // overwrite bootstrap variables here
 $primary: #4482a9;
-$secondary: #4482a9;
+$secondary: #1a2740;
 $success: #f8da19;
 $info: #ffffff;
 $warning: #ec970f;
 $danger: #ec970f;
 $light: #c0d1e6;
 $dark: #1a2740;
+
+$blue: #4482a9;
+$red: #dc3545;
+$orange: #ec970f;
+$yellow: #f8da19;
+$teal: #4482a9;
+$cyan: #4482a9;
+$white: #fff;
+$gray: #1a2740;
+$gray-dark: #1a2740;
 
 $body-bg: #ffffff;
 $body-color: #1a2740;
@@ -69,6 +79,11 @@ button.close {background: transparent;border: 0;}
     width: 100%;height: 100%;
 }
 
+.list-group-item-info {
+    color: $secondary;
+    background-color: white;
+}
+
 b-card-text p {
     font-size: 18px;
 }
@@ -81,6 +96,10 @@ hr {
     border-top: 3px solid #ec970f;
     display: inline-block;
   }
+  img {
+    image-rendering: pixelated;
+    image-rendering: -webkit-optimize-contrast;
+  }
 
 // Google map elements
 .infocontent {
@@ -89,18 +108,22 @@ hr {
         max-height: 600px;
         max-width: 600px;
         margin: 0 auto;
+        width:100%;
     }
     & p {
         font-size: 16px;
     }
     & h4 {
         font-size:18px;
+        margin: 0.5rem;
     }
     & small {
         font-size: 10px;
         float: right;
     }
-    
+}
+.locations div[role=dialog] {
+    max-width: 90vw!important;
 }
 
 .mobile {

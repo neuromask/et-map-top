@@ -5,7 +5,7 @@
       <div id="banner" class="g-light" :style="{backgroundImage: 'url('+bgImages[1]+')'}"></div>
 
       <b-container class="bg-light p-5 mt-4">
-          <h2>How to add locations to the map.</h2>
+          <h2 class="m-0">How to add locations to the map.</h2>
           <h5>Follow easy three steps to start</h5>
           <hr/>
           <b-card-group deck>

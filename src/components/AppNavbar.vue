@@ -4,12 +4,12 @@
         <b-sidebar id="sidebar-variant" title="ET⚡ Map" bg-variant="dark" text-variant="light" shadow backdrop>
         <div class="px-3 py-0">
         <b-img class="my-4" :src="require('../assets/img/circle.png')" fluid center></b-img>
-        <b-list-group flush class="my-4">
-            <b-list-group-item class="font-weight-bold" to="/">Map</b-list-group-item>
-            <b-list-group-item class="font-weight-bold" to="top">Top</b-list-group-item>
-            <b-list-group-item class="font-weight-bold" to="help">Help</b-list-group-item>
-            <b-list-group-item class="font-weight-bold" href="https://electrotallinn.ee/" target="_blank">ElectroTallinn Site</b-list-group-item>
-            <b-list-group-item class="font-weight-bold" v-b-modal.modal-login>Admin Access</b-list-group-item>
+        <b-list-group class="my-4">
+            <b-list-group-item variant="info" class="font-weight-bold" to="/">Map</b-list-group-item>
+            <b-list-group-item variant="info" class="font-weight-bold" to="top">Top</b-list-group-item>
+            <b-list-group-item variant="info" class="font-weight-bold" to="help">Help</b-list-group-item>
+            <b-list-group-item variant="primary" class="font-weight-bold" href="https://electrotallinn.ee/" target="_blank">ElectroTallinn Site</b-list-group-item>
+            <b-list-group-item variant="primary" class="font-weight-bold" href="#" v-b-modal.modal-login>Admin Access</b-list-group-item>
         </b-list-group>
         <hr />
         <p>🇷🇺 - Карта с обозначением мест расположения розеток для зарядки, ремонта в доступных местах.</p>
