@@ -1,26 +1,26 @@
 <template>
 
     <div class="navbar">
-        <b-sidebar id="sidebar-variant" title="ET⚡ Map" bg-variant="dark" text-variant="light" shadow backdrop>
-        <div class="px-3 py-0">
-        <b-img class="my-4" :src="require('../assets/img/circle.png')" fluid center></b-img>
-        <b-list-group class="my-4">
-            <b-list-group-item variant="info" class="font-weight-bold" to="/">Map</b-list-group-item>
-            <b-list-group-item variant="info" class="font-weight-bold" to="top">Top</b-list-group-item>
-            <b-list-group-item variant="info" class="font-weight-bold" to="help">Help</b-list-group-item>
-            <b-list-group-item variant="primary" class="font-weight-bold" href="https://electrotallinn.ee/" target="_blank">ElectroTallinn Site</b-list-group-item>
-            <b-list-group-item variant="primary" class="font-weight-bold" href="#" v-b-modal.modal-login>Admin Access</b-list-group-item>
-        </b-list-group>
-        <hr />
-        <p>🇷🇺 - Карта с обозначением мест расположения розеток для зарядки, ремонта в доступных местах.</p>
-        <p>🇬🇧 - Map showing the locations of outlets for charging, repair in accessible places.</p>
-        <p>🇪🇪 - Kaart, mis näitab laadimis- ja paranduskohtade asukohti juurdepääsetavates kohtades.</p>
-        <b-modal id="modal-login" title="Access Admin area" ok-only ok-variant="secondary" ok-title="Cancel">
-            <app-login></app-login>
-        </b-modal>
-        <hr />
-        <p class="text-center small">Copyright © 2021 – ElectroTallinn<br/>Crafted by Leo & <a href="https://nuforms.com/" target="_blank">Nuforms Design</a><br/>v 0.1 (Beta) ElectroMap</p>
-        </div>
+        <b-sidebar id="sidebar-variant" title="ET⚡ Map" bg-variant="dark" text-variant="light" :backdrop-variant="transparent" shadow backdrop>
+            <div class="px-3 py-0">
+            <b-img class="my-4" :src="require('../assets/img/circle.svg')" fluid center></b-img>
+            <b-list-group class="my-4">
+                <b-list-group-item variant="info" class="font-weight-bold" to="/">Map</b-list-group-item>
+                <b-list-group-item variant="info" class="font-weight-bold" to="top">Top</b-list-group-item>
+                <b-list-group-item variant="info" class="font-weight-bold" to="help">Help</b-list-group-item>
+                <b-list-group-item variant="primary" class="font-weight-bold" href="https://electrotallinn.ee/" target="_blank">ElectroTallinn Site</b-list-group-item>
+                <b-list-group-item variant="primary" class="font-weight-bold" href="#" v-b-modal.modal-login>Admin Access</b-list-group-item>
+            </b-list-group>
+            <hr />
+            <p>🇷🇺 - Карта с обозначением мест расположения розеток для зарядки, ремонта в доступных местах.</p>
+            <p>🇬🇧 - Map showing the locations of outlets for charging, repair in accessible places.</p>
+            <p>🇪🇪 - Kaart, mis näitab laadimis- ja paranduskohtade asukohti juurdepääsetavates kohtades.</p>
+            <b-modal id="modal-login" title="Access Admin area" ok-only ok-variant="secondary" ok-title="Cancel">
+                <app-login></app-login>
+            </b-modal>
+            <hr />
+            <p class="text-center small">Copyright © 2021 – ElectroTallinn<br/>Crafted by Leo & <a href="https://nuforms.com/" target="_blank">Nuforms Design</a><br/>v 0.1 (Beta) ElectroMap</p>
+            </div>
         </b-sidebar>
 
         <div id="badge">

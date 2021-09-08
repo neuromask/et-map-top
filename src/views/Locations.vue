@@ -4,6 +4,8 @@
     <div id="badgePos">
       <a @click="getUserPos"><b-icon-record-circle></b-icon-record-circle></a>
     </div>
+    <b-modal id="modal-report" title="Report point" ok-only ok-variant="secondary" ok-title="Send">
+    </b-modal>
   </div>
 </template>
 
@@ -73,7 +75,7 @@ export default {
 
           google.maps.event.addListener(marker, 'click', (function(marker) {
             return function() {
-              infowindow.setContent("<div class='infocontent'>" + (location.imageName ? "<img src='" + baseUrl + '/images/' + location.imageName + "'>" : "") + "<h4>" + location.title + "</h4><p>" + (location.description || "") + "</p><small>Added by: " + (location.user || "") + "</small></div>");
+              infowindow.setContent("<div class='infocontent'>" + (location.imageName ? "<img src='" + baseUrl + '/images/' + location.imageName + "'>" : "") + "<h4>" + location.title + "</h4><p>" + (location.description || "") + "</p><div><span class='report' v-b-modal.modal-report>Report</span><small>Added by: " + (location.user || "") + "</small></div></div>");
               infowindow.open(this.map, marker);
             }
           })(marker));

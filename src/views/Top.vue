@@ -51,7 +51,7 @@
               <template #cell(imageName)="data">
                 <div>
                   <b-button size="sm" v-b-modal="'image-modal-'+data.item.id" class="mb-2">Image</b-button>
-                  <b-button size="sm" v-b-modal="'map-modal-'+data.item.id">Map</b-button>
+                  <b-button class="bg-transparent btn-outline-primary" size="sm" v-b-modal="'map-modal-'+data.item.id">Map</b-button>
                 </div>
                 <b-modal :id="'image-modal-'+data.item.id" title="Photo" ok-only>
                   <b-img :src="BACKEND_BASE + '/images/' + data.item.imageName" center fluid></b-img>
