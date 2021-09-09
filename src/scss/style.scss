@@ -2,12 +2,13 @@
 // overwrite bootstrap variables here
 $primary: #4482a9;
 $secondary: #1a2740;
-$success: #f8da19;
+$success: #55a944;
 $info: #ffffff;
 $warning: #ec970f;
 $danger: #ec970f;
 $light: #c0d1e6;
 $dark: #1a2740;
+
 
 $blue: #4482a9;
 $red: #dc3545;
@@ -16,6 +17,7 @@ $yellow: #f8da19;
 $teal: #4482a9;
 $cyan: #4482a9;
 $white: #fff;
+$green: #55a944;
 $gray: #1a2740;
 $gray-dark: #1a2740;
 
@@ -41,7 +43,7 @@ html, body, #app {height: 100%; margin: 0; padding: 0; font-family: Arial, Helve
 }
 .container {border-top:4px solid #ec970f;}
 .gm-ui-hover-effect {background: transparent!important;border: 0!important;}
-button {border: 0!important;outline: none;box-shadow:none !important;}
+button {outline: none;box-shadow:none !important;}
 button:focus {border: 0!important;outline: none;box-shadow:none !important;}
 .table > tbody > tr > td {
     vertical-align: middle;
@@ -57,6 +59,7 @@ button:focus {border: 0!important;outline: none;box-shadow:none !important;}
     max-width: 48px;
     max-height: 48px;
 }
+
 .rank-sub {font-size: 14px; padding-left:0.5rem; border-left:4px solid #ec970f;}
 
 #badge {
@@ -97,9 +100,6 @@ hr {
     border-top: 3px solid #ec970f;
     display: inline-block;
   }
-  .row td img {
-
-  }
 
 // Google map elements
 .infocontent {
@@ -116,11 +116,14 @@ hr {
         border: 0;
     }
     & p {
-        font-size: 16px;
+        font-size: 14px;
+        margin: 0;
+        padding-bottom:0.2rem;
     }
     & h4 {
-        font-size:18px;
-        margin: 0.5rem;
+        font-size:16px;
+        margin: 0;
+        padding-top:0.3rem;
     }
     & small {
         font-size: 10px;

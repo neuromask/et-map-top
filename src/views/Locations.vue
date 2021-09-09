@@ -19,7 +19,6 @@ export default {
   props: {},
   data() {
     return {
-      BACKEND_BASE: 'https://etmap.nuforms.com',
       map: null,
       test: 'test',
       mapCenter: {lat: 0, lng:0},
@@ -54,7 +53,7 @@ export default {
       const mapContainer = this.$refs.googleMap;
       this.map = new google.maps.Map(mapContainer, this.mapConfig);
       const infowindow = new google.maps.InfoWindow({});
-      let baseUrl = this.BACKEND_BASE;
+      let baseUrl = this.$root.BACKEND_BASE;
 
       google.maps.event.addListener(this.map, "click", function(event) {
         infowindow.close();

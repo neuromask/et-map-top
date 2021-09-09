@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueGtag from "vue-gtag";
 import Vuex from "vuex"
-import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
 import VueMobileDetection from "vue-mobile-detection";
@@ -26,7 +26,7 @@ Vue.use(VueGtag, {
   }
 }, router);
 Vue.use(BootstrapVue)
-Vue.use(IconsPlugin)
+Vue.use(BootstrapVueIcons)
 Vue.use(VueRouter)
 Vue.use(Vuex)
 Vue.component('app-navbar', AppNavbar)
@@ -34,10 +34,13 @@ Vue.component('app-login', Login)
 Vue.use(VueMobileDetection);
 
 
+
+import axios from 'axios';
+
 const store = new Vuex.Store(
   {
       state: {
-          authenticated: false
+          authenticated: true
       },
       mutations: {
           setAuthentication(state, status) {
@@ -90,7 +93,16 @@ const router = new VueRouter({
       beforeEnter: (to, from, next) => {
         console.log(store.state.authenticated);
         if(store.state.authenticated == false) {
-            next(false);
+          axios
+          .get('https://etmap.nuforms.com/user')
+          .then(response => {
+              if (response.status == '200') {
+                  this.$store.commit("setAuthentication", true);
+                  next();
+              } else {
+                next(false);
+              }
+          });
         } else {
             next();
         }
@@ -99,7 +111,14 @@ const router = new VueRouter({
   ]
 });
 
+
+
 new Vue({
+  data() {
+    return {
+      BACKEND_BASE: 'https://etmap.nuforms.com',
+    }
+  },
   router,
   store: store,
   render: (h) => h(App)

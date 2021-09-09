@@ -49,12 +49,12 @@
                 <b-img :src="locationIcons[data.item.type]" center fluid class="table-icon"></b-img>
               </template>
               <template #cell(imageName)="data">
-                <div>
-                  <b-button size="sm" v-b-modal="'image-modal-'+data.item.id" class="mb-2">Image</b-button>
-                  <b-button class="bg-transparent btn-outline-primary" size="sm" v-b-modal="'map-modal-'+data.item.id">Map</b-button>
-                </div>
+                  <b-button-group size="sm">
+                    <b-button size="sm" v-b-modal="'image-modal-'+data.item.id">Image</b-button>
+                    <b-button variant="primary" size="sm" v-b-modal="'map-modal-'+data.item.id">Map</b-button>
+                  </b-button-group>
                 <b-modal :id="'image-modal-'+data.item.id" title="Photo" ok-only>
-                  <b-img :src="BACKEND_BASE + '/images/' + data.item.imageName" center fluid></b-img>
+                  <b-img :src="$root.BACKEND_BASE + '/images/' + data.item.imageName" center fluid></b-img>
                 </b-modal>
                 <b-modal :id="'map-modal-'+data.item.id" title="Point on map" ok-only>
                   <iframe width="100%" height="460px" frameBorder="0" :src="'https://maps.google.com/maps?q='+data.item.lat+','+data.item.lng+'&z=15&output=embed'"></iframe>
@@ -78,7 +78,6 @@ export default {
   props: {},
   data() {
     return {
-      BACKEND_BASE: 'https://etmap.nuforms.com',
       bgImages: [
         require("@/assets/img/pattern-icons.png"),
         require("@/assets/img/top.jpg"),
@@ -88,6 +87,7 @@ export default {
       locationIcons: {
         CHARGE: require("@/assets/img/icon/icon-charge.svg"),
         REPAIR: require('@/assets/img/icon/icon-repair.svg'),
+        AIR: require('@/assets/img/icon/icon-air.svg'),
         WATER: require('@/assets/img/icon/icon-water.svg')
       },
       ranks: [
@@ -210,12 +210,12 @@ export default {
     requests() {
 
       axios
-        .get(this.BACKEND_BASE + '/locations')
+        .get(this.$root.BACKEND_BASE + '/locations')
         .then(response => {
           this.listFull = response.data.slice().reverse();
         });
       axios
-        .get(this.BACKEND_BASE + '/locations/top')
+        .get(this.$root.BACKEND_BASE + '/locations/top')
         .then(response => {
           this.listTop = response.data;
         });
