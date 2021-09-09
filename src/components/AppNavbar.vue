@@ -9,8 +9,9 @@
                 <b-list-group-item variant="info" class="font-weight-bold" to="top">Top</b-list-group-item>
                 <b-list-group-item variant="info" class="font-weight-bold" to="help">Help</b-list-group-item>
                 <b-list-group-item variant="primary" class="font-weight-bold" href="https://electrotallinn.ee/" target="_blank">ElectroTallinn Site</b-list-group-item>
-                <b-list-group-item variant="primary" class="font-weight-bold" href="#" v-b-modal.modal-login>Admin Access</b-list-group-item>
+                <!--<b-list-group-item variant="primary" class="font-weight-bold" href="#" v-b-modal.modal-login>Admin Access</b-list-group-item>-->
             </b-list-group>
+            <!--<vue-telegram-login mode="callback" telegram-login="ElectroTallinnBot" size="large" radius="4" @callback="$root.loginTelegram" />-->
             <hr />
             <p>🇷🇺 - Карта с обозначением мест расположения розеток для зарядки, ремонта в доступных местах.</p>
             <p>🇬🇧 - Map showing the locations of outlets for charging, repair in accessible places.</p>
@@ -29,3 +30,16 @@
     </div>
 
 </template>
+<script>
+
+
+export default {
+  name: 'AppNavbar',
+  methods: {
+    loginTelegram2 (user) {
+      // gets user as an input id, first_name, last_name, username, photo_url, auth_date and hash
+      console.log(user)
+    }
+  }
+}
+</script>

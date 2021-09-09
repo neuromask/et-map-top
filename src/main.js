@@ -5,7 +5,7 @@ import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
 import VueMobileDetection from "vue-mobile-detection";
-
+import {vueTelegramLogin} from 'vue-telegram-login'
 
 // Components and views
 import Locations from '@/views/Locations.vue'
@@ -31,6 +31,7 @@ Vue.use(VueRouter)
 Vue.use(Vuex)
 Vue.component('app-navbar', AppNavbar)
 Vue.component('app-login', Login)
+Vue.component('vueTelegramLogin', vueTelegramLogin)
 Vue.use(VueMobileDetection);
 
 
@@ -111,12 +112,39 @@ const router = new VueRouter({
   ]
 });
 
-
-
 new Vue({
   data() {
     return {
       BACKEND_BASE: 'https://etmap.nuforms.com',
+      user: {
+        first_name: null,
+        uin: null,
+        photo_url: null,
+        username: null,
+      }
+    }
+  },
+  methods: {
+    loginTelegram(data) {
+      this.user = {
+        firstName: data.first_name,
+        uin: data.id,
+        photoUrl: data.photo_url,
+        username: data.username
+      };
+      console.log(this.user);
+      // gets user as an input id, first_name, last_name, username, photo_url, auth_date and hash
+        axios.defaults.withCredentials = true;
+        axios
+        .post(this.$root.BACKEND_BASE + '/user', this.user)
+        .then(response => {
+          console.log(response);
+            if (response.status == '200') {
+              this.user;
+            } else {
+                console.log("err");
+            }
+        });
     }
   },
   router,

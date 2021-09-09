@@ -4,30 +4,28 @@
     <div id="bg-image">
       <div id="banner" class="bg-light" :style="{backgroundImage: 'url('+bgImages[1]+')'}"></div>
       <b-container class="bg-light mt-4 p-5">
-
         <h2 class="m-0">ElectroPeople ranking - top activity.</h2>
-        <h5>Be the first!</h5>
-        
+        <h5>Be the first!</h5>    
         <hr/>
         <b-row>
           <b-col cols="12" lg="4">
             <h3><b-badge variant="danger" class="text-white font-weight-bold">Top</b-badge> ElectroPeople</h3>
-            <b-table class="bg-info" borderless outlined striped hover :items="listTop" :fields="fields_top" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc">
+            <b-table class="bg-info" borderless outlined striped hover :items="listTop" :fields="fieldsTop" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc">
               <template #cell(indx)="data">
                 <b-badge variant="light"><h3 class="text-right font-weight-bold">{{ data.index + 1 }}</h3></b-badge>
               </template>
               <template #cell(img)="data">
                 <b-img :src="ranks[getRank(data.item.count)].icon" center left fluid class="table-icon"></b-img>
               </template>
-              <template #cell(user)="data">
-                <h4>{{ data.item.user }}</h4><i class="rank-sub">{{ranks[getRank(data.item.count)].name}}</i>
+              <template #cell(userFirstName)="data">
+                <h4>{{ data.item.userFirstName }}</h4><i class="rank-sub">{{ranks[getRank(data.item.count)].name}}</i>
               </template>
               <template #cell(count)="data">
                 <b-badge variant="dark" class="text-white font-weight-bold"><h4>{{ data.item.count }}</h4></b-badge>
               </template>
             </b-table>
             <h3 class="mt-5"><b-badge variant="danger" class="text-white font-weight-bold">Ranks</b-badge> Legend</h3>
-            <b-table class="bg-info mb-5" borderless outlined striped hover :items="ranks" :fields="fields_rank">
+            <b-table class="bg-info mb-5" borderless outlined striped hover :items="ranks" :fields="fieldsRank">
               <template #cell(icon)="data">
                 <b-img :src="data.item.icon" center fluid class="table-icon"></b-img>
               </template>
@@ -41,9 +39,9 @@
           </b-col>
           <b-col cols="12" lg="8">
             <h3><b-badge variant="danger" class="text-white font-weight-bold">List</b-badge> Locations</h3>
-            <b-table class="bg-info" borderless striped hover :items="listFull" :fields="fields_loc">
+            <b-table class="bg-info" borderless striped hover :items="listFull" :fields="fieldsLoc">
               <template #cell(title)="data">
-                <h4>{{ data.item.title }}</h4><p>{{ data.item.description }}</p><small>Added by: {{ data.item.user }}</small>
+                <h4>{{ data.item.title }}</h4><p>{{ data.item.description }}</p><small>Added by: {{ data.item.userFirstName }}</small>
               </template>
               <template #cell(type)="data">
                 <b-img :src="locationIcons[data.item.type]" center fluid class="table-icon"></b-img>
@@ -81,8 +79,7 @@ export default {
       bgImages: [
         require("@/assets/img/pattern-icons.png"),
         require("@/assets/img/top.jpg"),
-        require("@/assets/img/tallinn.svg"),
-        require("@/assets/img/mol.svg")
+        require("@/assets/img/tallinn.svg")
       ],
       locationIcons: {
         CHARGE: require("@/assets/img/icon/icon-charge.svg"),
@@ -142,7 +139,7 @@ export default {
       ],
       listFull: [],
       listTop: [],
-      fields_loc: [
+      fieldsLoc: [
         {
           key: 'type',
           sortable: true,
@@ -159,14 +156,14 @@ export default {
           label: 'Info'
         }
       ],
-      fields_top: [
+      fieldsTop: [
          {
           key: 'indx',
           sortable: false,
           label: ''
         },
         {
-          key: 'user',
+          key: 'userFirstName',
           sortable: false,
           label: 'Name'
         },
@@ -183,7 +180,7 @@ export default {
       ],
       sortBy: 'count',
       sortDesc: true,
-      fields_rank: [
+      fieldsRank: [
         {
           key: 'icon',
           label: 'Medal'

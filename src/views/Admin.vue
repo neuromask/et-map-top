@@ -9,9 +9,9 @@
         <b-row>
           <b-col cols="12">
             <h3><b-badge variant="danger" class="text-white font-weight-bold">List</b-badge> Locations</h3>
-            <b-table class="bg-info" borderless striped hover :items="listFull" :fields="fields_loc">
+            <b-table class="bg-info" borderless striped hover :items="listFull" :fields="fieldsLoc">
               <template #cell(title)="data">
-                <h4>{{ data.item.title }}</h4><p>{{ data.item.description }}</p><small>Added by: {{ data.item.user }}</small>
+                <h4>{{ data.item.title }}</h4><p>{{ data.item.description }}</p><small>Added by: {{ data.item.userFirstName }}</small>
               </template>
               <template #cell(type)="data">
                 <b-img :src="locationIcons[data.item.type]" center fluid class="table-icon"></b-img>
@@ -78,7 +78,7 @@ export default {
         WATER: require('@/assets/img/icon/icon-water.svg')
       },
       listFull: [],
-      fields_loc: [
+      fieldsLoc: [
         {
           key: 'type',
           sortable: true,
@@ -118,8 +118,30 @@ export default {
         .then(response => {
           this.listFull = response.data.slice().reverse();
         });
+    },
+    deleteLoc(locId) {
+        axios
+        //.delete(this.$root.BACKEND_BASE + '/locations/' + locId)
+        .then((response) => {
+          if (response.status == '200') {
+            this.requests();
+            console.log(locId+" deleted");
+          }
+        })
+    },
+    statusLoc(locStatus) {
+      console.log(locStatus);
+      switch(locStatus) {
+      case "NEW":
+        text = "Banana is good!";
+        break;
+      case "Orange":
+        text = "I am not a fan of orange.";
+        break;
+      default:
+        text = "I have never heard of that fruit...";
+      }
     }
-
 
   }
 }
