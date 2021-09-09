@@ -33,7 +33,7 @@
               <template #cell(controls)="data">
                 <div>
                   <b-button-group size="sm">
-                    <b-button variant="success" :class="{ 'dark': data.item.status == 'NEW'  }" @click="statusLoc(data.item.type)"><b-icon icon="check-circle-fill" variant="white"></b-icon></b-button>
+                    <b-button variant="success" :class="{ 'dark': data.item.status == 'NEW' }" @click="statusLoc(data.item.type)"><b-icon icon="check-circle-fill" variant="white"></b-icon></b-button>
                     <b-button variant="primary"><b-icon icon="pencil-fill" variant="white"></b-icon></b-button>
                     <b-button variant="danger" v-b-modal="'delete-modal-'+data.item.id"><b-icon icon="trash-fill" variant="white"></b-icon></b-button>
                   </b-button-group>
@@ -118,30 +118,8 @@ export default {
         .then(response => {
           this.listFull = response.data.slice().reverse();
         });
-    },
-    deleteLoc(locId) {
-      axios
-        .delete(this.$root.BACKEND_BASE + '/locations/' + locId)
-        .then((response) => {
-            if (response.status == '200') {
-            this.requests();
-            console.log(locId+" deleted");
-          })
-        }
-    },
-    statusLoc(locStatus) {
-      console.log(locStatus);
-      switch(locStatus) {
-      case "NEW":
-        text = "Banana is good!";
-        break;
-      case "Orange":
-        text = "I am not a fan of orange.";
-        break;
-      default:
-        text = "I have never heard of that fruit...";
     }
-    }
+
 
   }
 }
