@@ -4,7 +4,7 @@
     <div id="bg-image">
       <div id="banner" class="bg-light" :style="{backgroundImage: 'url('+bgImages[1]+')'}"></div>
       <b-container class="bg-light mt-4 p-5">
-        <h2 class="m-0">ElectroPeople ranking - top activity.</h2>
+        <h2 class="m-0">ElectroPeople ranking - top activity</h2>
         <h5>Be the first!</h5>    
         <hr/>
         <b-row>
@@ -12,10 +12,10 @@
             <h3><b-badge variant="danger" class="text-white font-weight-bold">Top</b-badge> ElectroPeople</h3>
             <b-table class="bg-info" borderless outlined striped hover :items="listTop" :fields="fieldsTop" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc">
               <template #cell(indx)="data">
+                <div class="d-flex justify-content-center align-items-center">
                 <b-badge variant="light"><h3 class="text-right font-weight-bold">{{ data.index + 1 }}</h3></b-badge>
-              </template>
-              <template #cell(img)="data">
-                <b-img :src="ranks[getRank(data.item.count)].icon" center left fluid class="table-icon"></b-img>
+                <b-img :src="ranks[getRank(data.item.count)].icon" center left fluid class="ml-3 table-icon"></b-img>
+                </div>
               </template>
               <template #cell(userFirstName)="data">
                 <h4>{{ data.item.userFirstName }}</h4><i class="rank-sub">{{ranks[getRank(data.item.count)].name}}</i>
@@ -44,11 +44,11 @@
                 <h4>{{ data.item.title }}</h4><p>{{ data.item.description }}</p><small>Added by: {{ data.item.userFirstName }}</small>
               </template>
               <template #cell(type)="data">
-                <b-img :src="locationIcons[data.item.type]" center fluid class="table-icon"></b-img>
+                <b-img :src="locationIcons[data.item.type]" center fluid-grow class="table-icon"></b-img>
               </template>
               <template #cell(imageName)="data">
-                  <b-button-group size="sm">
-                    <b-button size="sm" v-b-modal="'image-modal-'+data.item.id">Image</b-button>
+                  <b-button-group size="sm" vertical>
+                    <b-button v-b-modal="'image-modal-'+data.item.id">Image</b-button>
                     <b-button variant="primary" size="sm" v-b-modal="'map-modal-'+data.item.id">Map</b-button>
                   </b-button-group>
                 <b-modal :id="'image-modal-'+data.item.id" title="Photo" ok-only>
@@ -110,31 +110,37 @@ export default {
           num: 3,
           icon: require('@/assets/img/ranks/rank-4.png'),
           name: 'ElectroGoldie',
-          minCount: 7
+          minCount: 10
         },
         {
           num: 4,
           icon: require('@/assets/img/ranks/rank-5.png'),
-          name: 'ElectroDiamond',
-          minCount: 10
+          name: 'ElectroDmnd',
+          minCount: 20
         },
         {
           num: 5,
           icon: require('@/assets/img/ranks/rank-6.png'),
           name: 'ElectroMeteor',
-          minCount: 15
+          minCount: 35
         },
         {
           num: 6,
           icon: require('@/assets/img/ranks/rank-7.png'),
           name: 'ElectroSpace',
-          minCount: 30
+          minCount: 50
         },
         {
           num: 7,
           icon: require('@/assets/img/ranks/rank-8.png'),
           name: 'ElectroGodness',
-          minCount: 50
+          minCount: 75
+        },
+        {
+          num: 8,
+          icon: require('@/assets/img/ranks/rank-9.png'),
+          name: 'ElectroZeus',
+          minCount: 100
         }
       ],
       listFull: [],
@@ -160,22 +166,18 @@ export default {
          {
           key: 'indx',
           sortable: false,
-          label: ''
+          label: 'Rank'
         },
+
         {
           key: 'userFirstName',
           sortable: false,
           label: 'Name'
         },
         {
-          key: 'img',
-          sortable: false,
-          label: ''
-        },
-        {
           key: 'count',
           sortable: false,
-          label: 'Points'
+          label: 'Pts'
         }
       ],
       sortBy: 'count',
@@ -191,7 +193,7 @@ export default {
         },
         {
           key: 'minCount',
-          label: 'Points'
+          label: 'Pts'
         }
       ]
     }

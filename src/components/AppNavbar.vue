@@ -11,7 +11,22 @@
                 <b-list-group-item variant="primary" class="font-weight-bold" href="https://electrotallinn.ee/" target="_blank">ElectroTallinn Site</b-list-group-item>
                 <!--<b-list-group-item variant="primary" class="font-weight-bold" href="#" v-b-modal.modal-login>Admin Access</b-list-group-item>-->
             </b-list-group>
-            <!--<vue-telegram-login mode="callback" telegram-login="ElectroTallinnBot" size="large" radius="4" @callback="$root.loginTelegram" />-->
+            
+            <div v-if="$root.isLogged">
+                <b-alert show variant="primary">
+                    <div class="d-flex justify-content-left align-items-center">
+                        <b-img  class="float-left" rounded="circle" width="80" height="80" :src="$root.user.photoUrl"></b-img>
+                        <div class="ml-3">
+                            <h5 class="m-0">{{$root.user.firstName}}</h5>
+                            <p class="m-0"><a :href='"https://t.me/"+$root.user.username' target="_blank">@{{$root.user.username}}</a></p>
+                            <router-link to="profile"><b-icon icon="person-bounding-box"></b-icon> Profile</router-link>
+                        </div>
+                    </div>
+                </b-alert>
+            </div>
+            <div v-if="!$root.isLogged">
+                <vue-telegram-login mode="callback" telegram-login="ElectroTallinnBot" size="large" radius="4" @callback="$root.loginTelegram" />
+            </div>
             <hr />
             <p>🇷🇺 - Карта с обозначением мест расположения розеток для зарядки, ремонта в доступных местах.</p>
             <p>🇬🇧 - Map showing the locations of outlets for charging, repair in accessible places.</p>

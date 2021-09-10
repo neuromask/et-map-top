@@ -13,7 +13,7 @@ import AppNavbar from '@//components/AppNavbar.vue'
 import Top from '@/views/Top.vue'
 import Help from '@/views/Help.vue'
 import Admin from '@/views/Admin.vue'
-import Login from '@/components/Login.vue'
+import Profile from '@/views/UserProfile.vue'
 import NotFound from '@/components/NotFound.vue'
 
 
@@ -30,7 +30,6 @@ Vue.use(BootstrapVueIcons)
 Vue.use(VueRouter)
 Vue.use(Vuex)
 Vue.component('app-navbar', AppNavbar)
-Vue.component('app-login', Login)
 Vue.component('vueTelegramLogin', vueTelegramLogin)
 Vue.use(VueMobileDetection);
 
@@ -84,29 +83,15 @@ const router = new VueRouter({
           name: "login"
       }
     }, {
-      path: "/login",
-      name: "login",
-      component: Login
+      path: "/profile",
+      name: "user-profile",
+      component: Profile
     }, {
       path: '/admin',
       name: 'admin',
       component: Admin,
       beforeEnter: (to, from, next) => {
-        console.log(store.state.authenticated);
-        if(store.state.authenticated == false) {
-          axios
-          .get('https://etmap.nuforms.com/user')
-          .then(response => {
-              if (response.status == '200') {
-                  this.$store.commit("setAuthentication", true);
-                  next();
-              } else {
-                next(false);
-              }
-          });
-        } else {
-            next();
-        }
+        
       }
     }
   ]
@@ -115,7 +100,8 @@ const router = new VueRouter({
 new Vue({
   data() {
     return {
-      BACKEND_BASE: 'https://etmap.nuforms.com',
+      BACKEND_BASE: 'https://api.electrotallinn.ee',
+      isLogged: false,
       user: {
         first_name: null,
         uin: null,
@@ -132,9 +118,11 @@ new Vue({
         photoUrl: data.photo_url,
         username: data.username
       };
+      if (this.user.uin != null) this.isLogged = true;
       console.log(this.user);
       // gets user as an input id, first_name, last_name, username, photo_url, auth_date and hash
-        axios.defaults.withCredentials = true;
+      
+     /*   axios.defaults.withCredentials = true;
         axios
         .post(this.$root.BACKEND_BASE + '/user', this.user)
         .then(response => {
@@ -144,7 +132,7 @@ new Vue({
             } else {
                 console.log("err");
             }
-        });
+        }); */
     }
   },
   router,
