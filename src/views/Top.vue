@@ -24,7 +24,7 @@
                 <b-badge variant="dark" class="text-white font-weight-bold"><h4>{{ data.item.count }}</h4></b-badge>
               </template>
             </b-table>
-            <h3 class="mt-5"><b-badge variant="danger" class="text-white font-weight-bold">Ranks</b-badge> Legend</h3>
+            <h3 class="mt-5"><b-badge variant="danger" class="text-white font-weight-bold">Legend</b-badge> Ranks</h3>
             <b-table class="bg-info mb-5" borderless outlined striped hover :items="ranks" :fields="fieldsRank">
               <template #cell(icon)="data">
                 <b-img :src="data.item.icon" center fluid class="table-icon"></b-img>

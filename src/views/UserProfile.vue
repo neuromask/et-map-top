@@ -12,7 +12,7 @@
           <b-col cols="12" lg="4">
           <div v-if="!$root.isLogged">
             <b-alert show variant="primary" class="d-flex justify-content-center align-items-center">
-              <vue-telegram-login mode="callback" telegram-login="ElectroTallinnBot" size="large" radius="4" @callback="$root.loginTelegram" />
+              <b-button v-b-toggle.sidebar-variant class="mr-3"><b-icon-list></b-icon-list></b-button> Please login with telegram from menu
             </b-alert>
           </div>
           <div v-if="$root.isLogged">
@@ -46,19 +46,19 @@
                 </b-card-text>
 
                 <b-form-group>
-                  <b-input-group prepend="Name">
+                  <b-input-group append="Name">
                     <b-form-input id="input-1" v-model="form.name" placeholder="Your name" required></b-form-input>
                   </b-input-group>
                 </b-form-group>
 
                 <b-form-group>
-                  <b-input-group prepend="Age">
+                  <b-input-group append="Age">
                     <b-form-input id="input-1-1" v-model="form.age" placeholder="Your age" required></b-form-input>
                   </b-input-group>
                 </b-form-group>
                 
                 <b-form-group>
-                  <b-input-group prepend="Lang">
+                  <b-input-group append="Lang">
                   <b-form-checkbox-group
                     :options="languages"
                     button-variant="light"
@@ -69,13 +69,13 @@
                 </b-form-group>
 
                 <b-form-group>
-                  <b-input-group prepend="🏠">
+                  <b-input-group append="🏠">
                     <b-form-input id="input-2" v-model="form.location" placeholder="Your location: City, Area" required></b-form-input>
                   </b-input-group>
                 </b-form-group>
 
                 <b-form-group>
-                  <b-input-group prepend="🛴">
+                  <b-input-group append="🛴">
                     <b-form-input id="input-3" v-model="form.transport" placeholder="Your transport model" required></b-form-input>
                   </b-input-group>
                 </b-form-group>

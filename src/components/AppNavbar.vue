@@ -25,7 +25,9 @@
                 </b-alert>
             </div>
             <div v-if="!$root.isLogged">
-                <vue-telegram-login mode="callback" telegram-login="ElectroTallinnBot" size="large" radius="4" @callback="$root.loginTelegram" />
+                <b-alert show variant="primary" class="d-flex justify-content-center align-items-center telegram-login-box">
+                    <vue-telegram-login mode="callback" telegram-login="ElectroTallinnBot" size="large" radius="4" @callback="$root.loginTelegram" />
+                </b-alert>
             </div>
             <hr />
             <p>🇷🇺 - Карта с обозначением мест расположения розеток для зарядки, ремонта в доступных местах.</p>
