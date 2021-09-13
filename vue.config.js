@@ -3,8 +3,10 @@ const path = require('path')
 module.exports = {
     publicPath: './',
   devServer: {
-    port: '8080',
+    port: '3000',
     host: 'localhost',
+    //port: '80',
+    //host: 'map.electrotallinn.ee',
     overlay: {
       warnings: true,
       errors: true
