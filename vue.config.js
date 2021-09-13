@@ -1,7 +1,4 @@
-
-require = require('esm')(module);
 const path = require('path')
-const { routes } = require('./src/routes.js')
 
 module.exports = {
     publicPath: './',
@@ -11,13 +8,6 @@ module.exports = {
     overlay: {
       warnings: true,
       errors: true
-    }
-  },
-  pluginOptions: {
-    sitemap: {
-        baseURL: 'https://map.electrotallinn.ee',
-        outputDir: './',
-        routes,
     }
   },
   chainWebpack: config => {

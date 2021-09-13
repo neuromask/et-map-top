@@ -5,38 +5,12 @@
       <div id="banner" class="g-light" :style="{backgroundImage: 'url('+bgImages[1]+')'}"></div>
 
       <b-container class="bg-light p-5 mt-4">
-        <h2 class="m-0">Your profile</h2>
+        <h2 class="m-0"><strong>Your profile</strong> to customize</h2>
         <h5>Add more info about yourself here</h5>
         <hr/>
         <b-row>
-          <b-col cols="12" lg="4">
-          <div v-if="!$root.isLogged">
-            <b-alert show variant="primary" class="d-flex justify-content-center align-items-center">
-              <b-button v-b-toggle.sidebar-variant class="mr-3"><b-icon-list></b-icon-list></b-button> Please login with telegram from menu
-            </b-alert>
-          </div>
-          <div v-if="$root.isLogged">
-            <b-alert show variant="primary" class="py-4">
-              <div class="d-flex justify-content-left align-items-center">
-                <b-img  class="float-left" rounded="circle" width="80" height="80" :src="$root.user.photoUrl"></b-img>
-                <div class="ml-4">
-                    <h5 class="m-0">{{$root.user.firstName}}</h5>
-                    <a :href='"https://t.me/"+$root.user.username' target="_blank">@{{$root.user.username}}</a>
-                </div>
-              </div>
-                <b-list-group class="mt-4">
-                  <b-list-group-item>Name: </b-list-group-item>
-                  <b-list-group-item>Age: </b-list-group-item>
-                  <b-list-group-item>Lang: </b-list-group-item>
-                  <b-list-group-item>Location:</b-list-group-item>
-                  <b-list-group-item>Model:</b-list-group-item>
-                </b-list-group>
-                <b-img fluid :src="require('@/assets/img/step-1.jpg')"></b-img>
-            </b-alert>
-          </div>
-
-          </b-col>
           <b-col cols="12" lg="8">
+
             <b-form @submit="onSubmit" @reset="onReset" v-if="show">
               <b-card img-alt="Image" img-top>
                 <h3 class="font-weight-bold"><b-badge variant="danger" class="text-white">Info</b-badge> About you</h3>
@@ -92,6 +66,35 @@
                 </template>
               </b-card>
             </b-form>
+
+          </b-col>
+          <b-col cols="12" lg="4">
+            
+            <div v-if="!$root.isLogged">
+              <b-alert show variant="primary" class="d-flex justify-content-center align-items-center">
+                <b-button v-b-toggle.sidebar-variant class="mr-3"><b-icon-list></b-icon-list></b-button> Please login with telegram from menu
+              </b-alert>
+            </div>
+            <div v-if="$root.isLogged">
+              <b-alert show variant="primary" class="py-4">
+                <div class="d-flex justify-content-left align-items-center">
+                  <b-img  class="float-left" rounded="circle" width="80" height="80" :src="$root.user.photoUrl"></b-img>
+                  <div class="ml-4">
+                      <h5 class="m-0">{{$root.user.firstName}}</h5>
+                      <a :href='"https://t.me/"+$root.user.username' target="_blank">@{{$root.user.username}}</a>
+                  </div>
+                </div>
+                  <b-list-group class="mt-4">
+                    <b-list-group-item>Name: </b-list-group-item>
+                    <b-list-group-item>Age: </b-list-group-item>
+                    <b-list-group-item>Lang: </b-list-group-item>
+                    <b-list-group-item>Location:</b-list-group-item>
+                    <b-list-group-item>Model:</b-list-group-item>
+                  </b-list-group>
+                  <b-img fluid :src="require('@/assets/img/step-1.jpg')"></b-img>
+              </b-alert>
+            </div>
+
           </b-col>
         </b-row>
       </b-container>
@@ -133,6 +136,8 @@ export default {
     }
   },
   mounted () {
+      axios
+        .get(this.$root.BACKEND_BASE + '/user')
   },
   methods: {
 

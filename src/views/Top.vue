@@ -4,7 +4,7 @@
     <div id="bg-image">
       <div id="banner" class="bg-light" :style="{backgroundImage: 'url('+bgImages[1]+')'}"></div>
       <b-container class="bg-light mt-4 p-5">
-        <h2 class="m-0">ElectroPeople ranking - top activity</h2>
+        <h2 class="m-0"><strong>ElectroPeople ranking</strong> - top activity</h2>
         <h5>Be the first!</h5>    
         <hr/>
         <b-row>

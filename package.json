@@ -9,8 +9,7 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "dev": "vue-cli-service serve",
-    "sitemap": "vue-cli-service sitemap"
+    "dev": "vue-cli-service serve"
   },
   "dependencies": {
     "@popperjs/core": "^2.10.1",
@@ -47,7 +46,6 @@
     "pug-plain-loader": "^1.1.0",
     "sass": "~1.32.12",
     "sass-loader": "7.3.1",
-    "vue-cli-plugin-sitemap": "~2.3.0",
     "vue-template-compiler": "^2.6.14"
   },
   "eslintConfig": {

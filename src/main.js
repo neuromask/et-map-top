@@ -23,20 +23,13 @@ Vue.component('vueTelegramLogin', vueTelegramLogin)
 Vue.component('app-navbar', AppNavbar)
 
 const router = new VueRouter({
-  mode: 'history',
   base: process.env.BASE_URL,
   routes,
 });
 
 Vue.use(VueGtag, {
-  config: { id: "G-H7BDVQX6FQ" },
-  params: {
-    send_page_view: true
-  }
+  config: { id: "G-H7BDVQX6FQ" }
 }, router);
-
-
-
 
 import axios from 'axios';
 
