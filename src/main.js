@@ -6,8 +6,9 @@ import VueGtag from "vue-gtag"
 import Vuex from "vuex"
 import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
 import VueMobileDetection from "vue-mobile-detection"
-import {vueTelegramLogin} from "vue-telegram-login"
+// import {vueTelegramLogin} from "vue-telegram-login"
 import AppNavbar from './components/AppNavbar.vue'
+import TelegramLogin from "./components/TelegramLogin";
 
 
 
@@ -19,8 +20,9 @@ Vue.use(BootstrapVue)
 Vue.use(BootstrapVueIcons)
 Vue.use(Vuex)
 Vue.use(VueMobileDetection)
-Vue.component('vueTelegramLogin', vueTelegramLogin)
+// Vue.component('vueTelegramLogin', vueTelegramLogin)
 Vue.component('app-navbar', AppNavbar)
+Vue.component('telegram-login', TelegramLogin)
 
 const router = new VueRouter({
   base: process.env.BASE_URL,
@@ -87,4 +89,4 @@ new Vue({
   router,
   store: store,
   render: (h) => h(App)
-}).$mount('#app')
+}).$mount('#app');
