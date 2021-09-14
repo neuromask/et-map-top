@@ -44,14 +44,14 @@ axios.interceptors.request.use((config) => {
 
 const store = new Vuex.Store(
   {
-      state: {
-          authenticated: true
-      },
-      mutations: {
-          setAuthentication(state, status) {
-              state.authenticated = status;
-          }
-      }
+    state: {
+        authenticated: true
+    },
+    mutations: {
+        setAuthentication(state, status) {
+            state.authenticated = status;
+        }
+    }
   }
 );
 
@@ -70,21 +70,14 @@ new Vue({
   },
   methods: {
     loginTelegram(data) {
-      this.user = {
-        firstName: data.first_name,
-        uin: data.id,
-        photoUrl: data.photo_url,
-        username: data.username
-      };
-      if (this.user.uin != null) this.isLogged = true;
-      console.log(this.user);
-      // gets user as an input id, first_name, last_name, username, photo_url, auth_date and hash
-
       axios
         .post(this.$root.BACKEND_BASE + '/login', data)
         .then(response => {
           localStorage.setItem('user', JSON.stringify(response.data.user));
           localStorage.setItem('jwt', response.data.token);
+
+          // TODO maybe not need this?
+          this.isLogged = response.auth;
 
           axios
             .get(this.$root.BACKEND_BASE + '/user')
