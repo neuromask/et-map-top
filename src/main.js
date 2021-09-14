@@ -9,9 +9,7 @@ import VueMobileDetection from "vue-mobile-detection"
 // import {vueTelegramLogin} from "vue-telegram-login"
 import AppNavbar from './components/AppNavbar.vue'
 import TelegramLogin from "./components/TelegramLogin";
-
-
-
+import axios from 'axios';
 
 import './scss/style.scss'
 
@@ -34,7 +32,15 @@ Vue.use(VueGtag, {
   config: { id: "G-H7BDVQX6FQ" }
 }, router);
 
-import axios from 'axios';
+// intercept axios requests to add auth token
+axios.interceptors.request.use((config) => {
+  let jwt = localStorage.getItem('jwt');
+  if (jwt) {
+    config.headers["Authorization"] = `Bearer ${jwt}`;
+  }
+  console.log(config);
+  return config;
+});
 
 const store = new Vuex.Store(
   {
@@ -73,18 +79,19 @@ new Vue({
       if (this.user.uin != null) this.isLogged = true;
       console.log(this.user);
       // gets user as an input id, first_name, last_name, username, photo_url, auth_date and hash
-      
-     /*   axios.defaults.withCredentials = true;
-        axios
-        .post(this.$root.BACKEND_BASE + '/user', this.user)
+
+      axios
+        .post(this.$root.BACKEND_BASE + '/login', data)
         .then(response => {
-          console.log(response);
-            if (response.status == '200') {
-              this.user;
-            } else {
-                console.log("err");
-            }
-        }); */
+          localStorage.setItem('user', JSON.stringify(response.data.user));
+          localStorage.setItem('jwt', response.data.token);
+
+          axios
+            .get(this.$root.BACKEND_BASE + '/user')
+            .then(r => {
+              console.log(r);
+            });
+        });
     }
   },
   router,
