@@ -37,8 +37,8 @@ export const routes = [
         path: '/admin',
         name: 'admin',
         component: () => import('./views/Admin.vue'),
-        beforeEnter: (to, from, next) => {
+        //beforeEnter: (to, from, next) => {
             
-        }
+        //}
     }
 ]

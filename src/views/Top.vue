@@ -9,7 +9,7 @@
         <hr/>
         <b-row>
           <b-col cols="12" lg="4">
-            <h3><b-badge variant="danger" class="text-white font-weight-bold">Top</b-badge> ElectroPeople</h3>
+            <h3><b-badge variant="warning" class="text-white font-weight-bold">Top</b-badge> ElectroPeople</h3>
             <b-table class="bg-info" borderless outlined striped hover :items="listTop" :fields="fieldsTop" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc">
               <template #cell(indx)="data">
                 <div class="d-flex justify-content-center align-items-center">
@@ -24,7 +24,7 @@
                 <b-badge variant="dark" class="text-white font-weight-bold"><h4>{{ data.item.count }}</h4></b-badge>
               </template>
             </b-table>
-            <h3 class="mt-5"><b-badge variant="danger" class="text-white font-weight-bold">Legend</b-badge> Ranks</h3>
+            <h3 class="mt-5"><b-badge variant="warning" class="text-white font-weight-bold">Legend</b-badge> Ranks</h3>
             <b-table class="bg-info mb-5" borderless outlined striped hover :items="ranks" :fields="fieldsRank">
               <template #cell(icon)="data">
                 <b-img :src="data.item.icon" center fluid class="table-icon"></b-img>
@@ -38,7 +38,7 @@
             </b-table>
           </b-col>
           <b-col cols="12" lg="8">
-            <h3><b-badge variant="danger" class="text-white font-weight-bold">List</b-badge> Locations</h3>
+            <h3><b-badge variant="warning" class="text-white font-weight-bold">List</b-badge> Locations</h3>
             <b-table class="bg-info" borderless striped hover :items="listFull" :fields="fieldsLoc">
               <template #cell(title)="data">
                 <h4>{{ data.item.title }}</h4><p>{{ data.item.description }}</p><small>Added by: {{ data.item.userFirstName }}</small>

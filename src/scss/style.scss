@@ -2,10 +2,10 @@
 // overwrite bootstrap variables here
 $primary: #4482a9;
 $secondary: #1a2740;
-$success: #f8da19;
+$success: #55a944;
 $info: #ffffff;
 $warning: #ec970f;
-$danger: #ec970f;
+$danger: #dc3545;
 $light: #c0d1e6;
 $dark: #1a2740;
 
@@ -40,6 +40,23 @@ html, body, #app {height: 100%; margin: 0; padding: 0; font-family: Arial, Helve
     & h1,h2,h3,h4,strong {
         color:white;
     }
+}
+.Cookie--et {
+    background: #1a2740;
+    color: #fff;
+    padding: 1rem 2rem;
+}
+.Cookie--et .Cookie__button {
+    background: #ec970f;
+    padding: 0.425em 2.125em;
+    color: #fff;
+    border-radius: 0;
+    border: 0;
+    margin:0;
+    font-size: 1em;
+}
+.Cookie--et .Cookie__button:hover {
+    background: #f8da19;
 }
 .container {border-top:4px solid #ec970f;}
 .gm-ui-hover-effect {background: transparent!important;border: 0!important;}

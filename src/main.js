@@ -77,7 +77,7 @@ new Vue({
           localStorage.setItem('jwt', response.data.token);
 
           // TODO maybe not need this?
-          this.isLogged = response.auth;
+          this.isLogged = true;
 
           axios
             .get(this.$root.BACKEND_BASE + '/user')

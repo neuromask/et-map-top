@@ -8,7 +8,7 @@
         <hr/>
         <b-row>
           <b-col cols="12">
-            <h3><b-badge variant="danger" class="text-white font-weight-bold">List</b-badge> Locations</h3>
+            <h3><b-badge variant="warning" class="text-white font-weight-bold">List</b-badge> Locations</h3>
             <b-table class="bg-info" borderless striped hover :items="listFull" :fields="fieldsLoc">
               <template #cell(title)="data">
                 <h4>{{ data.item.title }}</h4><p>{{ data.item.description }}</p><small>Added by: {{ data.item.userFirstName }}</small>
@@ -30,11 +30,11 @@
                   <iframe width="100%" height="460px" frameBorder="0" :src="'https://maps.google.com/maps?q='+data.item.lat+','+data.item.lng+'&z=15&output=embed'"></iframe>
                 </b-modal>
               </template>
-              <template #cell(controls)="data">
+              <template  #cell(show_details)="data">
                 <div>
                   <b-button-group size="sm">
-                    <b-button variant="success" :class="{ 'dark': data.item.status == 'NEW' }" @click="statusLoc(data.item.type)"><b-icon icon="check-circle-fill" variant="white"></b-icon></b-button>
-                    <b-button variant="primary"><b-icon icon="pencil-fill" variant="white"></b-icon></b-button>
+                    <b-button variant="primary"><b-icon icon="pencil-fill" @click="data.toggleDetails" variant="white"></b-icon></b-button>
+                    <b-button :class="data.item.status == 'NEW' ? 'btn-warning' : 'btn-success'" @click="statusLoc(data.item.id)"><b-icon icon="check-circle-fill" variant="white"></b-icon></b-button>
                     <b-button variant="danger" v-b-modal="'delete-modal-'+data.item.id"><b-icon icon="trash-fill" variant="white"></b-icon></b-button>
                   </b-button-group>
                   <b-modal :id="'delete-modal-'+data.item.id" title="Confirm delete">
@@ -45,6 +45,15 @@
                     </template>
                   </b-modal>
                 </div>
+              </template>
+              <template #row-details="data">
+                <b-card>
+                  <b-form inline>
+                    <b-form-input id="inline-form-input-name" class="mb-2 mr-sm-2 mb-sm-0" :placeholder="data.item.title"></b-form-input>
+                    <b-form-input id="inline-form-input-username" class="mb-2 mr-sm-2 mb-sm-0" :placeholder="data.item.description"></b-form-input>
+                    <b-button variant="primary">Save</b-button>
+                  </b-form>
+                </b-card>
               </template>
             </b-table>
           </b-col>
@@ -95,7 +104,7 @@ export default {
           label: 'Info'
         },
         {
-          key: 'controls',
+          key: 'show_details',
           sortable: false,
           label: ''
         }
@@ -129,18 +138,15 @@ export default {
           }
         })
     },
-    statusLoc(locStatus) {
-      console.log(locStatus);
-      switch(locStatus) {
-      case "NEW":
-        text = "Banana is good!";
-        break;
-      case "Orange":
-        text = "I am not a fan of orange.";
-        break;
-      default:
-        text = "I have never heard of that fruit...";
-      }
+    statusLoc(locId) {
+        axios
+        .put(this.$root.BACKEND_BASE + '/locations/' + locId + '/confirm/')
+        .then((response) => {
+          if (response.status == '200') {
+            this.requests();
+            console.log(locId+" approved");
+          }
+        })
     }
 
   }

@@ -13,7 +13,7 @@
 
             <b-form @submit="onSubmit" @reset="onReset" v-if="show">
               <b-card img-alt="Image" img-top>
-                <h3 class="font-weight-bold"><b-badge variant="danger" class="text-white">Info</b-badge> About you</h3>
+                <h3 class="font-weight-bold"><b-badge variant="warning" class="text-white">Info</b-badge> About you</h3>
                 <hr/>
                 <b-card-text class="mt-4">
                   <h5>Fill info about yourself to see it on <strong>Profiles</strong> page.</h5> 

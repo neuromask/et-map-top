@@ -11,7 +11,7 @@
           <b-card-group deck>
 
             <b-card img-alt="Image" img-top>
-              <h3 class="font-weight-bold"><b-badge variant="danger" class="text-white">1</b-badge> Telegram App</h3>
+              <h3 class="font-weight-bold"><b-badge variant="warning" class="text-white">1</b-badge> Telegram App</h3>
               <hr/>
               <b-card-img :src="require('@/assets/img/step-1.jpg')"></b-card-img>
               <b-card-text class="mt-4">
@@ -23,7 +23,7 @@
             </b-card>
 
             <b-card img-alt="Image" img-top>
-              <h3 class="font-weight-bold"><b-badge variant="danger" class="text-white">2</b-badge> Chat with Bot</h3>
+              <h3 class="font-weight-bold"><b-badge variant="warning" class="text-white">2</b-badge> Chat with Bot</h3>
               <hr/>
               <b-card-img :src="require('@/assets/img/step-2.jpg')"></b-card-img>
               <b-card-text class="mt-4">
@@ -35,7 +35,7 @@
             </b-card>
 
             <b-card img-alt="Image" img-top>
-              <h3 class="font-weight-bold"><b-badge variant="danger" class="text-white">3</b-badge> Type command</h3>
+              <h3 class="font-weight-bold"><b-badge variant="warning" class="text-white">3</b-badge> Type command</h3>
               <hr/>
               <b-card-img :src="require('@/assets/img/step-3.jpg')"></b-card-img>
               <b-card-text class="mt-4">
