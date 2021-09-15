@@ -70,6 +70,12 @@ new Vue({
   },
   methods: {
     loginTelegram(data) {
+      this.user = {
+        firstName: data.first_name,
+        uin: data.id,
+        photoUrl: data.photo_url,
+        username: data.username
+      };
       axios
         .post(this.$root.BACKEND_BASE + '/login', data)
         .then(response => {
