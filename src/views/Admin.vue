@@ -24,23 +24,31 @@
                   </b-button-group>
                 </div>
                 <b-modal :id="'image-modal-'+data.item.id" title="Photo" ok-only>
-                  <b-img :src="$root.BACKEND_BASE + '/images/' + data.item.imageName" center fluid></b-img>
+                  <b-img :src="$root.BACKEND_BASE + '/images/' + data.item.imageName + '?cache='+cacheKey" center fluid></b-img>
+                  
+                  <template #modal-footer="{ ok, cancel, hide }">
+                    <b-button variant="secondary" @click="rotateImage(data.item.image, data.item.imageName)">Rotate</b-button>
+                    <b-button variant="primary" @click="ok()">Ok</b-button>
+                  </template>
                 </b-modal>
                 <b-modal :id="'map-modal-'+data.item.id" title="Point on map" ok-only>
                   <iframe width="100%" height="460px" frameBorder="0" :src="'https://maps.google.com/maps?q='+data.item.lat+','+data.item.lng+'&z=15&output=embed'"></iframe>
                 </b-modal>
               </template>
+              <template #cell(id)="data">
+                {{data.item.id}}
+              </template>
               <template  #cell(show_details)="data">
                 <div>
                   <b-button-group size="sm">
                     <b-button variant="primary"><b-icon icon="pencil-fill" @click="data.toggleDetails" variant="white"></b-icon></b-button>
-                    <b-button :class="data.item.status == 'NEW' ? 'btn-warning' : 'btn-success'" @click="statusLoc(data.item.id)"><b-icon icon="check-circle-fill" variant="white"></b-icon></b-button>
+                    <b-button :class="data.item.confirmed == 0 ? 'btn-warning' : 'btn-success'" @click="statusLoc(data.item.id)"><b-icon icon="check-circle-fill" variant="white"></b-icon></b-button>
                     <b-button variant="danger" v-b-modal="'delete-modal-'+data.item.id"><b-icon icon="trash-fill" variant="white"></b-icon></b-button>
                   </b-button-group>
                   <b-modal :id="'delete-modal-'+data.item.id" title="Confirm delete">
                     Are you sure you want to delete?<br />ID: {{data.item.id}}<br />Name: {{data.item.title}}
                     <template #modal-footer="{ ok, cancel, hide }">
-                      <b-button size="sm" @click="deleteLoc(data.item.id), hide()">OK</b-button>
+                      <b-button variant="primary" size="sm" @click="deleteLoc(data.item.id), hide()">OK</b-button>
                       <b-button size="sm" @click="cancel()">Cancel</b-button>
                     </template>
                   </b-modal>
@@ -49,9 +57,10 @@
               <template #row-details="data">
                 <b-card>
                   <b-form inline>
-                    <b-form-input id="inline-form-input-name" class="mb-2 mr-sm-2 mb-sm-0" :placeholder="data.item.title"></b-form-input>
-                    <b-form-input id="inline-form-input-username" class="mb-2 mr-sm-2 mb-sm-0" :placeholder="data.item.description"></b-form-input>
-                    <b-button variant="primary">Save</b-button>
+                    <b-form-input id="inline-form-input-name" class="mb-2 mr-sm-2 mb-sm-0" :value="data.item.title"></b-form-input>
+                    <b-form-input id="inline-form-input-username" class="mb-2 mr-sm-2 mb-sm-0" :value="data.item.description"></b-form-input>
+                    <b-form-select v-model="data.item.type" class="mb-2 mr-sm-2 mb-sm-0" :options="locationTypes"></b-form-select>
+                    <b-button variant="primary" @click="updateLoc(data.item.id, data.item)">Update</b-button>
                   </b-form>
                 </b-card>
               </template>
@@ -74,6 +83,7 @@ export default {
   data() {
     return {
       componentKey: 0,
+      cacheKey: +new Date(),
       bgImages: [
         require("@/assets/img/pattern-icons.png"),
         require("@/assets/img/top.jpg"),
@@ -86,8 +96,19 @@ export default {
         AIR: require('@/assets/img/icon/icon-air.svg'),
         WATER: require('@/assets/img/icon/icon-water.svg')
       },
+      locationTypes: [
+          { value: 'CHARGE', text: 'Charge' },
+          { value: 'REPAIR', text: 'Repair' },
+          { value: 'AIR', text: 'Air' },
+          { value: 'WATER', text: 'Water' }
+        ],
       listFull: [],
       fieldsLoc: [
+        {
+          key: 'id',
+          sortable: false,
+          label: 'ID'
+        },
         {
           key: 'type',
           sortable: true,
@@ -130,7 +151,7 @@ export default {
     },
     deleteLoc(locId) {
         axios
-        //.delete(this.$root.BACKEND_BASE + '/locations/' + locId)
+        .delete(this.$root.BACKEND_BASE + '/locations/' + locId)
         .then((response) => {
           if (response.status == '200') {
             this.requests();
@@ -140,11 +161,32 @@ export default {
     },
     statusLoc(locId) {
         axios
-        .put(this.$root.BACKEND_BASE + '/locations/' + locId + '/confirm/')
+        .put(this.$root.BACKEND_BASE + '/locations/' + locId + '/confirmed/toggle')
         .then((response) => {
           if (response.status == '200') {
             this.requests();
             console.log(locId+" approved");
+          }
+        })
+    },
+    updateLoc(locId, location) {
+        axios
+        .put(this.$root.BACKEND_BASE + '/locations/' + locId, location)
+        .then((response) => {
+          if (response.status == '200') {
+            this.requests();
+            console.log(locId+" updated");
+          }
+        })
+    },
+    rotateImage(image, imageName) {
+        axios
+        .put(this.$root.BACKEND_BASE + '/images/rotate/' + imageName)
+        .then((response) => {
+          if (response.status == '200') {
+            this.requests();
+            this.cacheKey = +new Date();
+            console.log(imageName+" rotated");
           }
         })
     }
