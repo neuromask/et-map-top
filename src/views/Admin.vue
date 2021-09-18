@@ -57,10 +57,11 @@
               <template #row-details="data">
                 <b-card>
                   <b-form inline>
-                    <b-form-input id="inline-form-input-name" class="mb-2 mr-sm-2 mb-sm-0" :value="data.item.title"></b-form-input>
-                    <b-form-input id="inline-form-input-username" class="mb-2 mr-sm-2 mb-sm-0" :value="data.item.description"></b-form-input>
+                    <b-form-input id="inline-form-input-name" class="mb-2 mr-sm-2 mb-sm-0" v-model="data.item.title"></b-form-input>
+                    <b-form-input id="inline-form-input-username" class="mb-2 mr-sm-2 mb-sm-0" v-model="data.item.description"></b-form-input>
                     <b-form-select v-model="data.item.type" class="mb-2 mr-sm-2 mb-sm-0" :options="locationTypes"></b-form-select>
                     <b-button variant="primary" @click="updateLoc(data.item.id, data.item)">Update</b-button>
+                    {{data.item}}
                   </b-form>
                 </b-card>
               </template>
